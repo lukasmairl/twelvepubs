@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  token #{accessToken}
+
+  if accessToken
+    a(href='/logout') Foursquare Logout
+  else
+    a(href='/login') Foursquare Login 
