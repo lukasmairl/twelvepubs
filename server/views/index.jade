@@ -4,9 +4,20 @@ block content
   h1= title
   p Welcome to #{title}
 
-  token #{accessToken}
+  ul
+    - for (var x = 0; x < pubs.length; x++)
+      li
+        =pubs[x].name
+        =pubs[x].location
+        =pubs[x].time
 
-  if accessToken
-    a(href='/logout') Foursquare Logout
-  else
-    a(href='/login') Foursquare Login 
+  div.tabs
+    ul
+      li.dumbo
+        a(href='#map-canvas-dumbo') Dumbo
+      li.les
+        a(href='#map-canvas-les') Lower East Side
+
+    #map-canvas-dumbo.map-canvas
+
+    #map-canvas-les.map-canvas

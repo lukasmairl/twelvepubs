@@ -7,11 +7,15 @@
   },
   "dependencies": {
     "express": "3.4.0",
-    "jade": "*"
+    "jade": "*",
+    "googlemaps": "*"
   },
   "description": "",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "winston":"*",
+    "vows": "*"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lukasmairl/twelvepubs.git"
