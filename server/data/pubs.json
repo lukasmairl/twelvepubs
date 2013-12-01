@@ -1,57 +1,77 @@
 {
 	"dumbo": [
 		{
+			"id": "68jay",
 			"name": "68 Jay Street",
 			"location": [40.702873,-73.986751],
-			"time": "6:15pm"
+			"time": "6:15pm",
+			"active": false
 		},
 		{
+			"id": "superfine",
 			"name": "Superfine",
 			"location": [40.702389,-73.987528],
-			"time": "6:45pm"
+			"time": "6:45pm",
+			"active": false
 		},
 		{
+			"id": "rebar",
 			"name": "Rebar",
 			"location": [40.702465,-73.987054],
-			"time": "7:15pm"
+			"time": "7:15pm",
+			"active": false
 		}
 	],
 
 	"les" : [
 		{
+			"id": "magician",
 			"name":"The Magician",
 			"location": [40.719810,-73.987297],
-			"time": "7:45"
+			"time": "7:45",
+			"active": false
 		},
 		{
+			"id": "motorcity",
 			"name":"Motor City",
 			"location": [40.719898,-73.988487],
-			"time": "8:15"
+			"time": "8:15",
+			"active": false
 		},
 		{
+			"id": "sanloco",
 			"name":"San Loco",
 			"location": [40.719898,-73.987526],
-			"time": "8:45"
+			"time": "8:45",
+			"active": false
 		},
 		{
+			"id": "doubeldown",
 			"name":"Double Down",
 			"location": [40.722982,-73.985756],
-			"time": "9:15"
+			"time": "9:15",
+			"active": false
 		},
 		{
+			"id": "sophies",
 			"name":"Sophies",
 			"location": [40.725063,-73.98404],
-			"time": "9:45"
+			"time": "9:45",
+			"active": false
 		},
 		{
+			"id": "manitoba",
 			"name":"Manitoba's",
 			"location": [40.724706,-73.983139],
-			"time": "10:15"
+			"time": "10:15",
+			"active": false
 		},
 		{
+			"id": "horseshoe",
 			"name":"HorseShoe Bar",
 			"location": [40.720819,-73.987537],
-			"time": "10:45"
+			"time": "10:45",
+			"active": false
 		}
 	]
 }

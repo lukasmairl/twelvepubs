@@ -1,0 +1,19 @@
+#content
+  - if (message)
+    p
+    | #{message}
+
+  form(method="POST")
+    ul
+      - for (neighbourhood in pubs)
+        - for (var i = 0; i < pubs[neighbourhood].length; i++)
+          li
+            label
+              - if (pubs[neighbourhood][i].id == selected)
+                input(type="radio" name="pub" checked="checked" value=pubs[neighbourhood][i].id)
+                = pubs[neighbourhood][i].name
+              - else
+                input(type="radio" name="pub"  value=pubs[neighbourhood][i].id)
+                = pubs[neighbourhood][i].name
+
+    input(type="submit" value="Go")

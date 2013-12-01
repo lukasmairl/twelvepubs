@@ -38,7 +38,7 @@ $(document).ready(function() {
         $("#container").animate({"marginLeft": ["0", 'easeOutExpo']}, {
             duration: 700,
             complete: function() {
-                  $('#content').css('width', 'auto');
+                $('#content').css('width', 'auto');
                 $('#contentLayer').css('display', 'none');
 
             }

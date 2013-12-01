@@ -4,14 +4,7 @@ block content
   #content
     h1= title
     p Welcome to #{title}
-
-    ul
-      - for (var x = 0; x < pubs.length; x++)
-        li
-          =pubs[x].name
-          =pubs[x].location
-          =pubs[x].time
-
+    
     div.tabs.maps
       ul
         li.dumbo

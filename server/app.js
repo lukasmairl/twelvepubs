@@ -12,6 +12,12 @@ var path = require('path');
 var gm = require('googlemaps');
 var util = require('util');
 var pubs =  require('./data/pubs');
+var admin = require('./controllers/admin');
+var redis = require('redis');
+
+var redisClient = redis.createClient();
+
+redisClient.set("pubs", JSON.stringify(pubs))
 
 var app = express();
 
@@ -63,6 +69,20 @@ app.get('/login', function(req, res) {
   res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
   res.end();
 });
+
+app.get('/admin', function(req, res){
+    res.render('admin', {pubs: pubs});
+})
+
+app.post('/admin', function(req, res){
+    admin.process(req, res, redisClient);
+})
+
+app.get('/pubs.json', function(req, res){
+    redisClient.get("pubs", function(err, reply){
+      res.json(JSON.parse(reply));
+    });
+})
 
 
 app.get('/callback', function (req, res) {
