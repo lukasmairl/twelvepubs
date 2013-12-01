@@ -1,23 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #content
+    h1= title
+    p Welcome to #{title}
 
-  ul
-    - for (var x = 0; x < pubs.length; x++)
-      li
-        =pubs[x].name
-        =pubs[x].location
-        =pubs[x].time
-
-  div.tabs.maps
     ul
-      li.dumbo
-        a(href='#map-canvas-dumbo') Dumbo
-      li.les
-        a(href='#map-canvas-les') Lower East Side
+      - for (var x = 0; x < pubs.length; x++)
+        li
+          =pubs[x].name
+          =pubs[x].location
+          =pubs[x].time
 
-    #map-canvas-dumbo.map-canvas
+    div.tabs.maps
+      ul
+        li.dumbo
+          a(href='#map-canvas-dumbo') Dumbo
+        li.les
+          a(href='#map-canvas-les') Lower East Side
 
-    #map-canvas-les.map-canvas
+      #map-canvas-dumbo.map-canvas
+
+      #map-canvas-les.map-canvas

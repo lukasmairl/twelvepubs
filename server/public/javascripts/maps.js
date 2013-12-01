@@ -29,21 +29,24 @@ $(document).ready(
         var pubLatLng =
             new google.maps.LatLng(pub.location[0], pub.location[1]);
 
+        var image = {
+          url: "images/beer.png"
+        }
+
         var marker = new google.maps.Marker({
             position: pubLatLng,
             title: pub.name,
-            icon: "images/beer.png"
+            icon: image
         });
 
         marker.setMap(maps[neighbourhood]);
-
+        console.log(pub)
         attachContent(maps[neighbourhood], marker, pub);
       }
     }
 
-
     $('.tabs').tabs(
-      { active: 16,
+      { active: 1,
         activate: function(event, ui ) {
 
           var neighourhoodID = ui.newPanel[0].id;
@@ -61,7 +64,8 @@ $(document).ready(
     function attachContent (map, marker, pub){
 
       var infoWindow =  new google.maps.InfoWindow({
-        content: "<p>"+pub.name+ "/"+ pub.time+"</p>"
+        content: "<div style='width:200px;'><p>"+pub.name+ "/"+ pub.time+"</p></div>",
+        maxWidth: 200
       });
 
       google.maps.event.addListener(marker, 'click', function() {

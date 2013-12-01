@@ -20,20 +20,20 @@
 	"les" : [
 		{
 			"name":"The Magician",
-			"location": [40.720819,-73.987537],
+			"location": [40.719810,-73.987297],
 			"time": "7:45"
 		},
 		{
 			"name":"Motor City",
-			"location": [40.72025,-73.988503],
+			"location": [40.719898,-73.988487],
 			"time": "8:15"
 		},
 		{
 			"name":"San Loco",
-			"location": [40.721583,-73.987602],
+			"location": [40.719898,-73.987526],
 			"time": "8:45"
 		},
-			{
+		{
 			"name":"Double Down",
 			"location": [40.722982,-73.985756],
 			"time": "9:15"

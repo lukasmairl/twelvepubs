@@ -2,9 +2,27 @@ doctype 5
 html
   head
     title= title
+    meta(name="viewport",  width="device-width", initial-scale = "1.0", maximum-scale="1.0", user-scalable="no")
+    
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    #container
+      header
+        #hamburger
+          div
+          div
+          div
+      nav
+        ul
+          li
+            a(href='#') menu item 1
+          li
+            a(href='#') menu item 2
+          li
+            a(href='#') menu item 3
+          li
+            a(href='#') menu item 4  
+      block content
     script.
       var pubs = !{JSON.stringify(pubs)}
     script(src="https://maps.googleapis.com/maps/api/js?key=#{gmaps}&v=3.exp&sensor=false")
