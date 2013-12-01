@@ -9,10 +9,11 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+// var instagram = require('instagram-node-lib');
+// var foursquare = require('node-foursquare');
 var gm = require('googlemaps');
 var util = require('util');
 var pubs =  require('./data/pubs');
-
 var app = express();
 
 
@@ -36,17 +37,37 @@ var googleMapsConfig = {
 gm.config(googleMapsConfig);
 
 
-// Four Square
-var foursquareConfig = {
-  'secrets' : {
-    'clientId' : 'J00O10IPKZIZHTIKUS3NYZ3B1ODHTCIUU1OO2J1UNPVQXFPX',
-    'clientSecret' : 'TR5T2G4H3TJ3K4UE2XLEQWGHH2RWRH0W3IEQ5MA1D4VHYHTE',
-    'redirectUrl' : 'http://0.0.0.0:3000/callback'
-  }
-}
+// // Foursquare
+// var foursquareConfig = {
+//   'secrets' : {
+//     'clientId' : 'J00O10IPKZIZHTIKUS3NYZ3B1ODHTCIUU1OO2J1UNPVQXFPX',
+//     'clientSecret' : 'TR5T2G4H3TJ3K4UE2XLEQWGHH2RWRH0W3IEQ5MA1D4VHYHTE',
+//     'redirectUrl' : 'http://0.0.0.0:3000/callback'
+//   }
+// }
 
-var foursquare = require('node-foursquare');
-foursquare(foursquareConfig);
+// foursquare(foursquareConfig);
+
+
+
+console.log("-------------- CRON -----------------");
+// var cronJob = require('cron').CronJob;
+
+// var job = new cronJob('10 * * * * *', function(){
+//     console.log("CRON");
+//     // Runs every weekday (Monday through Friday)
+//     // at 11:30:00 AM. It does not run on Saturday
+//     // or Sunday.
+//   }, function () {
+//     // This function is executed when the job stops
+//   },
+//   true /* Start the job right now */
+// );
+var cronJob = require('cron').CronJob;
+new cronJob('*/5  * * * * *', function(){
+    console.log('You will see this message every 5 seconds');
+}, null, true, "America/Los_Angeles");
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -59,28 +80,38 @@ app.get('/', function(req, res){
    res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs, gmaps:googleMapsConfig.key});
 });
 
-app.get('/login', function(req, res) {
-  res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
-  res.end();
-});
+// app.get('/login', function(req, res) {
+//   res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
+//   res.end();
+// });
 
 
-app.get('/callback', function (req, res) {
-  foursquare.getAccessToken({
-    code: req.query.code
-  },
-  function (error, accessToken) {
-   	if(error) {
-      res.send('An error was thrown: ' + error.message);
-    }
-    else {
-      foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
-         console.log(data);
-         res.render('index', {accessToken: accessToken, data:data});
-      });
-    }
-  });
-});
+// app.get('/callback', function (req, res) {
+//   foursquare.getAccessToken({
+//     code: req.query.code
+//   },
+//   function (error, accessToken) {
+//    	if(error) {
+//       res.send('An error was thrown: ' + error.message);
+//     }
+//     else {
+//       foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
+//          console.log(data);
+//          res.render('index', {accessToken: accessToken, data:data});
+//       });
+//     }
+//   });
+// });
+
+//fetch api data
+//TODO cronjob
+require("./routes/api")(app);
+
+//feed
+require("./routes/feed")(app);
+
+
+
 
 
 
