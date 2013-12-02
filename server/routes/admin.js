@@ -1,4 +1,4 @@
-module.exports = function(app, admin, redisClient) {
+module.exports = function(app, admin, redisClient, pubs) {
 
   app.get('/admin', function(req, res) {
       res.render('admin', {pubs: pubs});

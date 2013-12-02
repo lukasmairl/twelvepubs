@@ -1,6 +1,6 @@
 
 
-exports.process = function(req, res, redisClient) {
+exports.process = function(req, res, redisClient, pubs) {
 
   redisClient.get('pubs', function(err, reply) {
 
