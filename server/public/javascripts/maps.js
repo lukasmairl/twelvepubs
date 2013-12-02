@@ -1,6 +1,4 @@
-$(document).ready(
-  (function() {
-
+$(document).ready(function(){
     var maps = {};
     var re = /map-canvas-(\w+)/;
     var mapOptions = {
@@ -15,35 +13,45 @@ $(document).ready(
     };
 
 
+    $.get('/pubs.json').done(function(pubs) {
 
+      for (neighbourhood in pubs) {
+        maps[neighbourhood] = new google.maps.Map(
+            document.getElementById('map-canvas-' + neighbourhood),
+        mapOptions[neighbourhood]);
 
-    for (neighbourhood in pubs) {
+        for (var i = 0; i < pubs[neighbourhood].length; i++) {
+          var pub = pubs[neighbourhood][i];
 
-      maps[neighbourhood] = new google.maps.Map(
-          document.getElementById('map-canvas-' + neighbourhood),
-      mapOptions[neighbourhood]);
+          var pubLatLng =
+              new google.maps.LatLng(pub.location[0], pub.location[1]);
 
-      for (var i = 0; i < pubs[neighbourhood].length; i++) {
-        var pub = pubs[neighbourhood][i];
+          var image = {
+            url: "./images/beer.png"
+          };
 
-        var pubLatLng =
-            new google.maps.LatLng(pub.location[0], pub.location[1]);
+          if (pub.active) {
+             var marker = new google.maps.Marker({
+              position: pubLatLng,
+              title: pub.name,
+              icon: image
+            });
+          } else {
+            var marker = new google.maps.Marker({
+              position: pubLatLng,
+              title: pub.name
+            });
+          }
+         
 
-        var marker = new google.maps.Marker({
-            position: pubLatLng,
-            title: pub.name,
-            icon: "images/beer.png"
-        });
-
-        marker.setMap(maps[neighbourhood]);
-
-        attachContent(maps[neighbourhood], marker, pub);
+          marker.setMap(maps[neighbourhood]);
+          console.log(pub);
+          attachContent(maps[neighbourhood], marker, pub);
+        }
       }
-    }
 
-
-    $('.tabs').tabs(
-      { active: 16,
+      $('.tabs').tabs({
+        active: 0,
         activate: function(event, ui ) {
 
           var neighourhoodID = ui.newPanel[0].id;
@@ -53,23 +61,21 @@ $(document).ready(
           google.maps.event.trigger(maps[neighbourhood], 'resize');
           maps[neighbourhood].setCenter(center);
         }
-      }
+      });
+    });
 
-    );
 
 
-    function attachContent (map, marker, pub){
 
-      var infoWindow =  new google.maps.InfoWindow({
-        content: "<p>"+pub.name+ "/"+ pub.time+"</p>"
+
+    function attachContent(map, marker, pub) {
+      var infoWindow = new google.maps.InfoWindow({
+        content: "<div style='width:200px;'><p>" + pub.name + '/'+ pub.time + '</p></div>',
+        maxWidth: 200
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.open(map,marker);
+        infoWindow.open(map, marker);
       });
-
     }
-
-
-  })()
-);
+});

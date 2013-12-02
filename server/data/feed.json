@@ -1,0 +1,30 @@
+{
+	[
+		{
+			"type": "TWEET",
+			"text": "@lizambarrett @eibhlinh @ardtonabbey Three down nine to go #twelvepubs http://t.co/DRh6dIYcak",
+			"dateTime": "Thu Nov 28 00:16:45 +0000 2013",
+			"user" : "lukas"
+			}
+		},
+		{
+			"type": "INSTAGRAM",
+			"image": "http://distilleryimage8.s3.amazonaws.com/fcf999ce59f811e3894c0efd4fef123c_8.jpg",
+			"dateTime": "Thu Nov 28 00:19:45 +0000 2013",
+			"user" : "lukas"
+		},
+		{
+			"type": "TWEET",
+			"text": "@lizambarrett @eibhlinh @ardtonabbey Three down nine to go #twelvepubs http://t.co/DRh6dIYcak",
+			"dateTime": "Thu Nov 28 00:16:45 +0000 2013",
+			"user" : "lukas"
+			}
+		},
+		{
+			"type": "INSTAGRAM",
+			"image": "http://distilleryimage8.s3.amazonaws.com/fcf999ce59f811e3894c0efd4fef123c_8.jpg",
+			"dateTime": "Thu Nov 28 00:19:45 +0000 2013",
+			"user" : "lukas"
+		}
+	]
+}

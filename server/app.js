@@ -14,6 +14,13 @@ var path = require('path');
 var gm = require('googlemaps');
 var util = require('util');
 var pubs =  require('./data/pubs');
+var admin = require('./controllers/admin');
+var redis = require('redis');
+
+var redisClient = redis.createClient();
+
+redisClient.set("pubs", JSON.stringify(pubs))
+
 var app = express();
 
 
@@ -50,23 +57,6 @@ gm.config(googleMapsConfig);
 
 
 
-console.log("-------------- CRON -----------------");
-// var cronJob = require('cron').CronJob;
-
-// var job = new cronJob('10 * * * * *', function(){
-//     console.log("CRON");
-//     // Runs every weekday (Monday through Friday)
-//     // at 11:30:00 AM. It does not run on Saturday
-//     // or Sunday.
-//   }, function () {
-//     // This function is executed when the job stops
-//   },
-//   true /* Start the job right now */
-// );
-var cronJob = require('cron').CronJob;
-new cronJob('*/5  * * * * *', function(){
-    console.log('You will see this message every 5 seconds');
-}, null, true, "America/Los_Angeles");
 
 
 // development only
@@ -84,6 +74,20 @@ app.get('/', function(req, res){
 //   res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
 //   res.end();
 // });
+
+app.get('/admin', function(req, res){
+    res.render('admin', {pubs: pubs});
+})
+
+app.post('/admin', function(req, res){
+    admin.process(req, res, redisClient);
+})
+
+app.get('/pubs.json', function(req, res){
+    redisClient.get("pubs", function(err, reply){
+      res.json(JSON.parse(reply));
+    });
+})
 
 
 // app.get('/callback', function (req, res) {
@@ -110,9 +114,30 @@ require("./routes/api")(app);
 //feed
 require("./routes/feed")(app);
 
+//api
+// var Api = require("./models/api");
+// api = new Api();
+// api.queryApis();
 
 
 
+//console.log("-------------- CRON -----------------");
+// var cronJob = require('cron').CronJob;
+
+// var job = new cronJob('10 * * * * *', function(){
+//     console.log("CRON");
+//     // Runs every weekday (Monday through Friday)
+//     // at 11:30:00 AM. It does not run on Saturday
+//     // or Sunday.
+//   }, function () {
+//     // This function is executed when the job stops
+//   },
+//   true /* Start the job right now */
+// );
+// var cronJob = require('cron').CronJob;
+// new cronJob('*/5  * * * * *', function(){
+//     console.log('You will see this message every 5 seconds');
+// }, null, true, "America/Los_Angeles");
 
 
 // Create server
