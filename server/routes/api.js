@@ -7,7 +7,7 @@
 
 // var redis = require("redis");
 // var client = redis.createClient();
-	
+
 // // Twitter
 // var T = new twitter({
 //     consumer_key: '4WLbGgPyRZ1RbCQ8J2i1kA'
@@ -29,103 +29,105 @@ var foursquareConfig = {
     'clientSecret' : 'TR5T2G4H3TJ3K4UE2XLEQWGHH2RWRH0W3IEQ5MA1D4VHYHTE',
     'redirectUrl' : 'http://0.0.0.0:3000/callback'
   }
-}
+};
 
 foursquare(foursquareConfig);
 
 module.exports = function(app) {
 
-	app.get('/api/foursquare/login', function(req, res) {
-	  res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
-	  res.end();
-	});
+  app.get('/api/foursquare/login', function(req, res) {
+    res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
+    res.end();
+  });
 
 
-	app.get('/api/foursquare/callback', function (req, res) {
-	  foursquare.getAccessToken({
-	    code: req.query.code
-	  },
-	  function (error, accessToken) {
-	   	if(error) {
-	      res.send('An error was thrown: ' + error.message);
-	    }
-	    else {
-	      foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
-	         console.log(data);
-	         res.render('index', {accessToken: accessToken, data:data});
-	      });
-	    }
-	  });
-	});
+  app.get('/api/foursquare/callback', function(req, res) {
+    foursquare.getAccessToken({
+      code: req.query.code
+    },
+    function(error, accessToken) {
+      if (error) {
+        res.send('An error was thrown: ' + error.message);
+      }
+      else {
+        foursquare.Checkins.getRecentCheckins(null, accessToken,
+              function(data) {
+           console.log(data);
+           res.render('index', {accessToken: accessToken, data: data});
+        });
+      }
+    });
+  });
 
-// 	app.get('/api/tweets', function(req, res) {
-// 		console.log("tweeeeeets");  
-// 		T.get('search/tweets', { q: '#TwelvePubs', count: 100 }, function(err, res) {
-// 			console.log("---- data ----");
-// 			console.log(res);
+//  app.get('/api/tweets', function(req, res) {
+//    console.log("tweeeeeets");
+//    T.get('search/tweets', { q: '#TwelvePubs', count: 100 },
+//      function(err, res) {
+//      console.log("---- data ----");
+//      console.log(res);
 
-// 			var tweets = res.statuses;
+//      var tweets = res.statuses;
 
-// 			_.each(tweets, function(tweet) {
-				
-// 				var text 		= tweet.text;
-// 				var createdAt 	= tweet.created_at;
-// 				var user 		= tweet.user;
-// 				var date = (new Date(tweet.created_at)).getTime() / 1000;
+//      _.each(tweets, function(tweet) {
 
-// 				var tweet = {
-// 					text : text,
-// 					createdAt : date//,
-// 					//user: user
-// 				};
+//        var text    = tweet.text;
+//        var createdAt   = tweet.created_at;
+//        var user    = tweet.user;
+//        var date = (new Date(tweet.created_at)).getTime() / 1000;
+
+//        var tweet = {
+//          text : text,
+//          createdAt : date//,
+//          //user: user
+//        };
 
 
-// 				console.log("----------- TWEET --------------");
-// 				console.log(createdAt);
-// 				//console.log(JSON.stringify(tweet) );
+//        console.log("----------- TWEET --------------");
+//        console.log(createdAt);
+//        //console.log(JSON.stringify(tweet) );
 
-				
-// 				var date = (new Date(createdAt)).getTime() / 1000;
-// 				var test = JSON.stringify(tweet);
-// 				console.log(date);
-// 				var args = [ 'dd', date, test ];
-// 				console.log(args);
-// 				client.zadd(args, function (err, response) {
-// 				    if (err) throw err;
-// 				    console.log('added '+response+' items.');
-// 				});
 
-// 			});
+//        var date = (new Date(createdAt)).getTime() / 1000;
+//        var test = JSON.stringify(tweet);
+//        console.log(date);
+//        var args = [ 'dd', date, test ];
+//        console.log(args);
+//        client.zadd(args, function (err, response) {
+//            if (err) throw err;
+//            console.log('added '+response+' items.');
+//        });
 
-// 			// -Infinity and +Infinity also work
-// 		    var args1 = [ 'dd', '+inf', '-inf' ];
-// 		    client.zrevrangebyscore(args1, function (err, response) {
-// 		        if (err) throw err;
-// 		        console.log('example1', response);
-// 		        // write your code here
-// 		    })
-// 		});
-// 	});
+//      });
 
-// 	app.get('/api/instagrams', function(req, res) {
-// 		instagram.tags.recent({ 
-// 		  q: 'zambrano',
-// 		  complete: function(instagrams){
+//      // -Infinity and +Infinity also work
+//        var args1 = [ 'dd', '+inf', '-inf' ];
+//        client.zrevrangebyscore(args1, function (err, response) {
+//            if (err) throw err;
+//            console.log('example1', response);
+//            // write your code here
+//        })
+//    });
+//  });
 
-// 			_.each(instagrams, function(instagram) {
+//  app.get('/api/instagrams', function(req, res) {
+//    instagram.tags.recent({
+//      q: 'zambrano',
+//      complete: function(instagrams){
 
-// 				var user 		= instagram.user;
-// 				var createdAt 	= instagram.created_time;
-// 				var image 		= instagram.images.standard_resolution;
+//      _.each(instagrams, function(instagram) {
 
-// 				console.log("----------- INSTRAGRAM --------------");
-// 				console.log(createdAt);
-// 				console.log(user);
-// 				console.log(image);
-// 			});
+//        var user    = instagram.user;
+//        var createdAt   = instagram.created_time;
+//        var image     = instagram.images.standard_resolution;
 
-// 		  }
-// 		});
-// 	});
+//        console.log("----------- INSTRAGRAM --------------");
+//        console.log(createdAt);
+//        console.log(user);
+//        console.log(image);
+//      });
+
+//      }
+//    });
+//  });
 
 };

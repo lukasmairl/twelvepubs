@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     var maps = {};
     var re = /map-canvas-(\w+)/;
     var mapOptions = {
@@ -27,7 +27,7 @@ $(document).ready(function(){
               new google.maps.LatLng(pub.location[0], pub.location[1]);
 
           var image = {
-            url: "./images/beer.png"
+            url: './images/beer.png'
           };
 
           if (pub.active) {
@@ -42,7 +42,7 @@ $(document).ready(function(){
               title: pub.name
             });
           }
-         
+
 
           marker.setMap(maps[neighbourhood]);
           console.log(pub);
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
       $('.tabs').tabs({
         active: 0,
-        activate: function(event, ui ) {
+        activate: function(event, ui) {
 
           var neighourhoodID = ui.newPanel[0].id;
           var neighbourhood = neighourhoodID.replace(re, '$1');
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     function attachContent(map, marker, pub) {
       var infoWindow = new google.maps.InfoWindow({
-        content: "<div style='width:200px;'><p>" + pub.name + '/'+ pub.time + '</p></div>',
+        content: "<div style='width:200px;'><p>" + pub.name + '/' + pub.time + '</p></div>',
         maxWidth: 200
       });
 

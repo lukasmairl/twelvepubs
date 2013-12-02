@@ -3,7 +3,7 @@ html
   head
     title= title
     meta(name="viewport",  width="device-width", initial-scale = "1.0", maximum-scale="1.0", user-scalable="no")
-    
+    link(href='http://fonts.googleapis.com/css?family=Roboto:100,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     #container
@@ -12,16 +12,15 @@ html
           div
           div
           div
+        h1= title
       nav
         ul
           li
+            a(href='/feed') Feed
+          li
             a(href='/map') Map
           li
-            a(href='#') menu item 2
-          li
-            a(href='#') menu item 3
-          li
-            a(href='#') menu item 4
+            a(href='/schedule') Schedule
       #contentLayer
       block content
     script.

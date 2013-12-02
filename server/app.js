@@ -13,13 +13,13 @@ var path = require('path');
 // var foursquare = require('node-foursquare');
 var gm = require('googlemaps');
 var util = require('util');
-var pubs =  require('./data/pubs');
+var pubs = require('./data/pubs');
 var admin = require('./controllers/admin');
 var redis = require('redis');
 
 var redisClient = redis.createClient();
 
-redisClient.set("pubs", JSON.stringify(pubs))
+redisClient.set('pubs', JSON.stringify(pubs));
 
 var app = express();
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var googleMapsConfig = {
   'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
-}
+};
 
 // Google maps
 gm.config(googleMapsConfig);
@@ -55,10 +55,6 @@ gm.config(googleMapsConfig);
 
 // foursquare(foursquareConfig);
 
-
-
-
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -66,8 +62,9 @@ if ('development' == app.get('env')) {
 
 
 // routing
-app.get('/', function(req, res){
-   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs, gmaps:googleMapsConfig.key});
+app.get('/', function(req, res) {
+   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
+        gmaps: googleMapsConfig.key});
 });
 
 // app.get('/login', function(req, res) {
@@ -75,28 +72,21 @@ app.get('/', function(req, res){
 //   res.end();
 // });
 
-app.get('/admin', function(req, res){
-    res.render('admin', {pubs: pubs});
-})
 
-app.post('/admin', function(req, res){
-    admin.process(req, res, redisClient);
-})
+require('./routes/pubs')(app,redisClient);
 
-app.get('/pubs.json', function(req, res){
-    redisClient.get("pubs", function(err, reply){
-      res.json(JSON.parse(reply));
-    });
-})
+require('./routes/admin')(app, admin, redisClient);
 
+require('./routes/map')(app, {pubs: pubs,
+        gmaps: googleMapsConfig.key});
 
 // app.get('/callback', function (req, res) {
 //   foursquare.getAccessToken({
 //     code: req.query.code
 //   },
 //   function (error, accessToken) {
-//    	if(error) {
-//       res.send('An error was thrown: ' + error.message);
+//     if(error) {
+//        res.send('An error was thrown: ' + error.message);
 //     }
 //     else {
 //       foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
@@ -109,10 +99,10 @@ app.get('/pubs.json', function(req, res){
 
 //fetch api data
 //TODO cronjob
-require("./routes/api")(app);
+require('./routes/api')(app);
 
 //feed
-require("./routes/feed")(app);
+require('./routes/feed')(app);
 
 //api
 // var Api = require("./models/api");
@@ -141,6 +131,6 @@ require("./routes/feed")(app);
 
 
 // Create server
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });

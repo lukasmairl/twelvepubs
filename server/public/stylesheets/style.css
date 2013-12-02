@@ -1,20 +1,29 @@
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
 body {
  margin: 0;
- font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ font: 14px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 /*
 Header is relative so z-index: 1 guarantees always displayed on top
 */
 header {
-    background-color: #3b5998;
+    background-color: #111;
     padding: 10px;
     text-decoration: none;
     position: fixed;
     width: 100%;
-    z-index: 1;
-    -webkit-box-shadow:  0px 3px 7px 0px rgba(0, 0, 0, 0.4);
-    box-shadow:  0px 3px 7px 0px rgba(0, 0, 0, 0.4);
+    z-index: 10;
 }
 
 /*
@@ -35,7 +44,8 @@ position absolute isset to cover the whole viewport
 the hamburger button with a little gradient effekt
 */
 #hamburger {
-    border: 1px solid #374C77;
+    float:left;
+    border: 1px solid #363A42;
     border-radius: 3px 3px 3px 3px;
     cursor: pointer;
     display: block;
@@ -43,14 +53,7 @@ the hamburger button with a little gradient effekt
     padding: 3px 4px 3px;
     position: relative;
     width: 25px;
-    background: #4569b2;
-    background: -moz-linear-gradient(top,  #4569b2 0%, #4062a5 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4569b2), color-stop(100%,#4062a5));
-    background: -webkit-linear-gradient(top,  #4569b2 0%,#4062a5 100%);
-    background: -o-linear-gradient(top,  #4569b2 0%,#4062a5 100%);
-    background: -ms-linear-gradient(top,  #4569b2 0%,#4062a5 100%);
-    background: linear-gradient(to bottom,  #4569b2 0%,#4062a5 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4569b2', endColorstr='#4062a5',GradientType=0 );
+    background: #232323;
 }
 
 /*
@@ -125,10 +128,19 @@ so that the content is unclickable while menu is shown
     position: absolute;
     right: 0;
     top: 0;
-    width: 30%;
+    width: 60%;
     z-index: 5;
     min-height: 1062px;
 }
+
+h1 {
+    color: #eee;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    line-height: 32px
+}
+
 
 h1,
 p {
@@ -141,30 +153,33 @@ a {
 
 
 .maps {
-	width: 480px;
-
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .map-canvas {
 	width: 100%;
 	height: 600px;
 	border: 1px solid #aaa;
-	border-width: 0 1px 1px;
+    z-index: 1;
+    position: relative;
 }
 
 ul.ui-tabs-nav {
 	list-style: none;
-	margin: 0;
+	margin-bottom: -1px;
 	padding: 0;
 }
 
 ul.ui-tabs-nav li {
-	width: 49.5%;
-	display: inline-block;
+	width: 40%;
+	display: block;
+    float: left;
 	border: 1px solid #aaa;
-	border-width: 1px 1px 0;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
+	border-width: 1px 1px 1px;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
 }
 
 ul.ui-tabs-nav li a {
@@ -172,6 +187,11 @@ ul.ui-tabs-nav li a {
 	padding: 10px 20px;
 	display: block;
 	text-align: center;
+}
+
+ul.ui-tabs-nav li.ui-tabs-active{
+    position: relative;
+    margin-bottom: -3px
 }
 
 ul.ui-tabs-nav li.ui-tabs-active a {

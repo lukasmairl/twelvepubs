@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  #content
+
+    div.tabs.maps
+      ul.clearfix
+        li.dumbo
+          a(href='#map-canvas-dumbo') Dumbo
+        li.les
+          a(href='#map-canvas-les') Lower East Side
+
+      #map-canvas-dumbo.map-canvas
+
+      #map-canvas-les.map-canvas
