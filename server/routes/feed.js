@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.get('/feed', function(req, res) {
 
       //TODO: change to sort by timestamp
-      var args = ['userfeed2', '+inf', '-inf'];
+      var args = ['userfeed5', '+inf', '-inf'];
       client.zrevrangebyscore(args, function(err, response) {
       
       	if (err) throw err;

@@ -65,27 +65,19 @@ require('./routes/feed')(app);
 //api
 var Api = require("./models/api");
 api = new Api();
+api.TwitterFirstRun = true;
 api.queryApis();
-
+api.TwitterFirstRun = false;
 
 
 //console.log("-------------- CRON -----------------");
-// var cronJob = require('cron').CronJob;
+var cronJob = require('cron').CronJob;
 
-// var job = new cronJob('10 * * * * *', function(){
-//     console.log("CRON");
-//     // Runs every weekday (Monday through Friday)
-//     // at 11:30:00 AM. It does not run on Saturday
-//     // or Sunday.
-//   }, function () {
-//     // This function is executed when the job stops
-//   },
-//   true /* Start the job right now */
-// );
-// var cronJob = require('cron').CronJob;
-// new cronJob('*/5  * * * * *', function(){
-//     console.log('You will see this message every 5 seconds');
-// }, null, true, "America/Los_Angeles");
+var cronJob = require('cron').CronJob;
+new cronJob('*/10  * * * * *', function(){
+    console.log('querying apis....');
+    api.queryApis();
+}, null, true, "America/Los_Angeles");
 
 
 // Create server
