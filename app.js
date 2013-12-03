@@ -17,25 +17,25 @@ var admin = require('./controllers/admin');
 
 console.log(process.env.REDISTOGO_URL);
 
-var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
+// var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
 
-redisClient.set('foo', 'bar');
+// redisClient.set('foo', 'bar');
 
-redisClient.get('foo', function(err, value) {
-  console.log('foo is: ' + value);
-});
+// redisClient.get('foo', function(err, value) {
+//   console.log('foo is: ' + value);
+// });
 
 
 
-// if (process.env.REDISTOGO_URL) {
-// 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-// 	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
-// 	console.log(rtg.port, rtg.hostname, rtg.auth);
-// 	redisClient.auth(rtg.auth.split(":")[1]);
-// } else {
-// 	var redisClient = require('redis').createClient();
-// }
-// redisClient.set('pubs', JSON.stringify(pubs));
+
+var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
+console.log(rtg.port, rtg.hostname, rtg.auth);
+redisClient.auth(rtg.auth.split(":")[1]);
+
+
+redisClient.set('pubs', JSON.stringify(pubs));
+
 
 var app = express();
 
@@ -57,12 +57,12 @@ var googleMapsConfig = {
 };
 
 // Google maps
-gm.config(googleMapsConfig);
+//gm.config(googleMapsConfig);
 
 // development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+//if ('development' == app.get('env')) {
+//  app.use(express.errorHandler());
+//}
 
 
 // routing
@@ -71,16 +71,16 @@ app.get('/', function(req, res) {
         gmaps: googleMapsConfig.key});
 });
 
-require('./routes/pubs')(app,redisClient);
+//require('./routes/pubs')(app,redisClient);
 
-require('./routes/admin')(app, admin, redisClient, pubs);
+//require('./routes/admin')(app, admin, redisClient, pubs);
 
-require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
+//require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
 
 //require('./routes/api')(app);
 
 //feed
-require('./routes/feed')(app);
+//require('./routes/feed')(app);
 
 // Create server
 http.createServer(app).listen(app.get('port'), function() {
