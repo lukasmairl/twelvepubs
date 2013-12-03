@@ -105,9 +105,9 @@ require('./routes/api')(app);
 require('./routes/feed')(app);
 
 //api
-// var Api = require("./models/api");
-// api = new Api();
-// api.queryApis();
+var Api = require("./models/api");
+api = new Api();
+api.queryApis();
 
 
 

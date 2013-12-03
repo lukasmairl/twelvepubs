@@ -42,6 +42,7 @@ Api.prototype.getTweets = function() {
         var date = (new Date(tweet.created_at)).getTime() / 1000;
 
         var tweet = {
+          type: "TWEET",
           text : text,
           createdAt : date,
           user: user.screen_name
@@ -70,8 +71,9 @@ Api.prototype.getInstagrams = function() {
             var image     = instagram.images.standard_resolution;
             
             var instagram = {
-              image : image,
-              createdAt : createdAt,
+              type: "INSTAGRAM",
+              image: image,
+              createdAt: createdAt,
               user: user.username
             };
 
@@ -91,7 +93,7 @@ Api.prototype.addKey = function(key) {
     console.log("----- KEY -------");
     console.log(JSON.stringify(key));
 
-    var args = [ 'userfeed', key.createdAt, JSON.stringify(key) ];
+    var args = [ 'userfeed1', key.createdAt, JSON.stringify(key) ];
     client.zadd(args, function (err, response) {
         if (err) throw err;
         console.log('added '+response+' items.');
