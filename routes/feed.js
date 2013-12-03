@@ -1,7 +1,6 @@
 /*
  * FEED
  */
-var redis = require('redis');
 var _ = require('underscore');
 
 module.exports = function(app, client) {

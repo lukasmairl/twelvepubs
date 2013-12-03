@@ -79,7 +79,7 @@ require('./routes/pubs')(app,redisClient);
 //require('./routes/api')(app);
 
 //feed
-//require('./routes/feed')(app,redisClient);
+require('./routes/feed')(app,redisClient);
 
 // Create server
 http.createServer(app).listen(app.get('port'), function() {
