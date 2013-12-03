@@ -15,8 +15,9 @@ var util = require('util');
 var pubs = require('./data/pubs');
 var admin = require('./controllers/admin');
 
-if (process.env.REDISTOGO_URL) {
+console.log(process.env.REDISTOGO_URL);
 
+if (process.env.REDISTOGO_URL) {
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
 	console.log(rtg.port, rtg.hostname);
