@@ -27,13 +27,12 @@ console.log(process.env.REDISTOGO_URL);
 
 
 
-
-var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
-console.log(rtg.port, rtg.hostname, rtg.auth);
-redisClient.auth(rtg.auth.split(":")[1]);
-
-
+if (process.env.REDISTOGO_URL) {
+	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
+	console.log(rtg.port, rtg.hostname, rtg.auth);
+	redisClient.auth(rtg.auth.split(":")[1]);
+}
 redisClient.set('pubs', JSON.stringify(pubs));
 
 
@@ -57,12 +56,12 @@ var googleMapsConfig = {
 };
 
 // Google maps
-//gm.config(googleMapsConfig);
+gm.config(googleMapsConfig);
 
 // development only
-//if ('development' == app.get('env')) {
-//  app.use(express.errorHandler());
-//}
+if ('development' == app.get('env')) {
+ app.use(express.errorHandler());
+}
 
 
 // routing
