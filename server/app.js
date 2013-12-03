@@ -43,23 +43,10 @@ var googleMapsConfig = {
 // Google maps
 gm.config(googleMapsConfig);
 
-
-// // Foursquare
-// var foursquareConfig = {
-//   'secrets' : {
-//     'clientId' : 'J00O10IPKZIZHTIKUS3NYZ3B1ODHTCIUU1OO2J1UNPVQXFPX',
-//     'clientSecret' : 'TR5T2G4H3TJ3K4UE2XLEQWGHH2RWRH0W3IEQ5MA1D4VHYHTE',
-//     'redirectUrl' : 'http://0.0.0.0:3000/callback'
-//   }
-// }
-
-// foursquare(foursquareConfig);
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
 
 // routing
 app.get('/', function(req, res) {
@@ -67,41 +54,12 @@ app.get('/', function(req, res) {
         gmaps: googleMapsConfig.key});
 });
 
-// app.get('/login', function(req, res) {
-//   res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
-//   res.end();
-// });
-
-
 require('./routes/pubs')(app,redisClient);
 
 require('./routes/admin')(app, admin, redisClient, pubs);
 
-require('./routes/map')(app, {pubs: pubs,
-        gmaps: googleMapsConfig.key});
+require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
 
-// app.get('/callback', function (req, res) {
-//   foursquare.getAccessToken({
-//     code: req.query.code
-//   },
-//   function (error, accessToken) {
-//     if(error) {
-//        res.send('An error was thrown: ' + error.message);
-//     }
-//     else {
-//       foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
-//          console.log(data);
-//          res.render('index', {accessToken: accessToken, data:data});
-//       });
-//     }
-//   });
-// });
-
-//fetch api data
-//TODO cronjob
-require('./routes/api')(app);
-
-//feed
 require('./routes/feed')(app);
 
 //api
@@ -134,3 +92,42 @@ api.queryApis();
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+
+// app.get('/callback', function (req, res) {
+//   foursquare.getAccessToken({
+//     code: req.query.code
+//   },
+//   function (error, accessToken) {
+//     if(error) {
+//        res.send('An error was thrown: ' + error.message);
+//     }
+//     else {
+//       foursquare.Checkins.getRecentCheckins(null, accessToken, function(data){
+//          console.log(data);
+//          res.render('index', {accessToken: accessToken, data:data});
+//       });
+//     }
+//   });
+// });
+
+//fetch api data
+//TODO cronjob
+//require('./routes/api')(app);
+
+// // Foursquare
+// var foursquareConfig = {
+//   'secrets' : {
+//     'clientId' : 'J00O10IPKZIZHTIKUS3NYZ3B1ODHTCIUU1OO2J1UNPVQXFPX',
+//     'clientSecret' : 'TR5T2G4H3TJ3K4UE2XLEQWGHH2RWRH0W3IEQ5MA1D4VHYHTE',
+//     'redirectUrl' : 'http://0.0.0.0:3000/callback'
+//   }
+// }
+
+// foursquare(foursquareConfig);
+
+// app.get('/login', function(req, res) {
+//   res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
+//   res.end();
+// });

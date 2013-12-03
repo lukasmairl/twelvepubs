@@ -1,8 +1,6 @@
 //
 //  Api
 // 
-//
-
 var _ = require('underscore');
 var twitter = require('twit');
 var instagram = require('instagram-node-lib');
@@ -48,9 +46,6 @@ Api.prototype.getTweets = function() {
           user: user.screen_name
         };
 
-        // console.log("----------- TWEET --------------");
-        // console.log(tweet);
-
         self.addKey(tweet);
 
       });
@@ -78,20 +73,12 @@ Api.prototype.getInstagrams = function() {
             };
 
             self.addKey(instagram);
-
-            // console.log("----------- INSTRAGRAM --------------");
-            // console.log(createdAt);
-            // console.log(user);
-            // console.log(image);
       });
     }
   });
 };
 
 Api.prototype.addKey = function(key) {
-
-    console.log("----- KEY -------");
-    console.log(JSON.stringify(key));
 
     var args = [ 'userfeed2', key.createdAt, JSON.stringify(key) ];
     client.zadd(args, function (err, response) {
@@ -102,10 +89,8 @@ Api.prototype.addKey = function(key) {
 };
 
 Api.prototype.queryApis = function() {
-
   var tweets = this.getTweets();
   var instagrams = this.getInstagrams();
-
 }
 
 module.exports = Api;
