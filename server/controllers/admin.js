@@ -2,7 +2,7 @@
 var Api = require("../models/api");
 
 
-exports.process = function(req, res, redisClient) {
+exports.process = function(req, res, redisClient, pubs) {
 
   api = new Api();
  

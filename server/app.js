@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
 
 require('./routes/pubs')(app,redisClient);
 
-require('./routes/admin')(app, admin, redisClient);
+require('./routes/admin')(app, admin, redisClient, pubs);
 
 require('./routes/map')(app, {pubs: pubs,
         gmaps: googleMapsConfig.key});
