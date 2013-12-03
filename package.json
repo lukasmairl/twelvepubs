@@ -13,6 +13,7 @@
     "underscore": "*",
     "instagram-node-lib": "*",
     "redis": "0.9.1",
+    "redis-url": "0.1.0",
     "cron" : "*",
     "node-foursquare": "*"
   },
