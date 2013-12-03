@@ -93,7 +93,7 @@ Api.prototype.addKey = function(key) {
     console.log("----- KEY -------");
     console.log(JSON.stringify(key));
 
-    var args = [ 'userfeed1', key.createdAt, JSON.stringify(key) ];
+    var args = [ 'userfeed2', key.createdAt, JSON.stringify(key) ];
     client.zadd(args, function (err, response) {
         if (err) throw err;
         console.log('added '+response+' items.');

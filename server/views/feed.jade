@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  #content
+
+    div.feed
+      ul.clearfix
+        - each item in feed
+          li
+            - if (item.type == "TWEET")
+              = item.text 
+            - if (item.type == "INSTAGRAM")
+              <img src="#{item.image.url}"/>
+            - if (item.type == "NOTIFICATION")
+              At #{item.pub}
+              see <a href="/map">map</a> | <a href="/schedule">schedule</a>
+        
