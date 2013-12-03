@@ -14,10 +14,13 @@ var gm = require('googlemaps');
 var util = require('util');
 var pubs = require('./data/pubs');
 var admin = require('./controllers/admin');
-var redis = require('redis');
 
-var redisClient = redis.createClient();
-
+if (process.env.REDISTOGO_URL) {
+	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
+} else {
+	var redisClient = require('redis').createClient();
+}
 redisClient.set('pubs', JSON.stringify(pubs));
 
 var app = express();
