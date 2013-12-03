@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var maps = {};
+    var futurePubs = null;
+
     var re = /map-canvas-(\w+)/;
     var mapOptions = {
         dumbo: {
@@ -22,31 +24,37 @@ $(document).ready(function() {
 
         for (var i = 0; i < pubs[neighbourhood].length; i++) {
           var pub = pubs[neighbourhood][i];
+          var iconUrl;
 
           var pubLatLng =
               new google.maps.LatLng(pub.location[0], pub.location[1]);
 
-          var image = {
-            url: './images/beer.png'
-          };
-
-          if (pub.active) {
-             var marker = new google.maps.Marker({
-              position: pubLatLng,
-              title: pub.name,
-              icon: image
-            });
+          if (pub.active){
+            iconUrl = "./images/beer-now.png"
+          } else if (futurePubs) {
+            iconUrl= "./images/beer-to-do.png "
           } else {
-            var marker = new google.maps.Marker({
-              position: pubLatLng,
-              title: pub.name
-            });
+            iconUrl = "./images/beer-done.png"
           }
 
+          var image = {
+            url: iconUrl
+          };
+
+           var marker = new google.maps.Marker({
+            position: pubLatLng,
+            title: pub.name,
+            icon: image
+          });
 
           marker.setMap(maps[neighbourhood]);
-          console.log(pub);
+
           attachContent(maps[neighbourhood], marker, pub);
+
+          if (pub.active){
+            futurePubs = true
+          }
+
         }
       }
 
