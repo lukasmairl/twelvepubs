@@ -52,35 +52,35 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// var googleMapsConfig = {
-//   'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
-// };
+var googleMapsConfig = {
+  'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
+};
 
-// // Google maps
-// gm.config(googleMapsConfig);
+// Google maps
+gm.config(googleMapsConfig);
 
-// // development only
-// if ('development' == app.get('env')) {
-//   app.use(express.errorHandler());
-// }
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
 
 
-// // routing
-// app.get('/', function(req, res) {
-//    res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
-//         gmaps: googleMapsConfig.key});
-// });
+// routing
+app.get('/', function(req, res) {
+   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
+        gmaps: googleMapsConfig.key});
+});
 
-// require('./routes/pubs')(app,redisClient);
+require('./routes/pubs')(app,redisClient);
 
-// require('./routes/admin')(app, admin, redisClient, pubs);
+require('./routes/admin')(app, admin, redisClient, pubs);
 
-// require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
+require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
 
-// //require('./routes/api')(app);
+//require('./routes/api')(app);
 
-// //feed
-// require('./routes/feed')(app);
+//feed
+require('./routes/feed')(app);
 
 // Create server
 http.createServer(app).listen(app.get('port'), function() {
