@@ -17,60 +17,70 @@ var admin = require('./controllers/admin');
 
 console.log(process.env.REDISTOGO_URL);
 
-if (process.env.REDISTOGO_URL) {
-	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
-	console.log(rtg.port, rtg.hostname, rtg.auth);
-	redisClient.auth(rtg.auth.split(":")[1]);
-} else {
-	var redisClient = require('redis').createClient();
-}
-redisClient.set('pubs', JSON.stringify(pubs));
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL);
 
-var app = express();
+redis.set('foo', 'bar');
 
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-var googleMapsConfig = {
-  'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
-};
-
-// Google maps
-gm.config(googleMapsConfig);
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
-
-
-// routing
-app.get('/', function(req, res) {
-   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
-        gmaps: googleMapsConfig.key});
+redis.get('foo', function(err, value) {
+  console.log('foo is: ' + value);
 });
 
-require('./routes/pubs')(app,redisClient);
 
-require('./routes/admin')(app, admin, redisClient, pubs);
 
-require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
+// if (process.env.REDISTOGO_URL) {
+// 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+// 	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
+// 	console.log(rtg.port, rtg.hostname, rtg.auth);
+// 	redisClient.auth(rtg.auth.split(":")[1]);
+// } else {
+// 	var redisClient = require('redis').createClient();
+// }
+// redisClient.set('pubs', JSON.stringify(pubs));
 
-//require('./routes/api')(app);
+// var app = express();
 
-//feed
-require('./routes/feed')(app);
+
+// // all environments
+// app.set('port', process.env.PORT || 3000);
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'jade');
+// app.use(express.favicon());
+// app.use(express.logger('dev'));
+// app.use(express.bodyParser());
+// app.use(express.methodOverride());
+// app.use(app.router);
+// app.use(express.static(path.join(__dirname, 'public')));
+
+
+// var googleMapsConfig = {
+//   'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
+// };
+
+// // Google maps
+// gm.config(googleMapsConfig);
+
+// // development only
+// if ('development' == app.get('env')) {
+//   app.use(express.errorHandler());
+// }
+
+
+// // routing
+// app.get('/', function(req, res) {
+//    res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
+//         gmaps: googleMapsConfig.key});
+// });
+
+// require('./routes/pubs')(app,redisClient);
+
+// require('./routes/admin')(app, admin, redisClient, pubs);
+
+// require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
+
+// //require('./routes/api')(app);
+
+// //feed
+// require('./routes/feed')(app);
 
 // Create server
 http.createServer(app).listen(app.get('port'), function() {
