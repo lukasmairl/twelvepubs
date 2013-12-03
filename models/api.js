@@ -1,13 +1,22 @@
 //
 //  Api
-// 
+//
 var _ = require('underscore');
 var twitter = require('twit');
 var instagram = require('instagram-node-lib');
 var foursquare = require('node-foursquare');
-var redis = require("redis");
-var client = redis.createClient();
-  
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+  var client = require("redis").createClient(rtg.port, rtg.hostname);
+  console.log(rtg.port, rtg.hostname);
+  client.auth(rtg.auth.split(":")[1]);
+} else {
+  var client = require('redis').createClient();
+}
+
+
+
 // Twitter
 var T = new twitter({
     consumer_key: '4WLbGgPyRZ1RbCQ8J2i1kA'
@@ -33,7 +42,7 @@ Api.prototype.getTweets = function() {
       var tweets = res.statuses;
 
       _.each(tweets, function(tweet) {
-        
+
         var text    = tweet.text;
         var createdAt   = tweet.created_at;
         var user    = tweet.user;
@@ -55,8 +64,8 @@ Api.prototype.getTweets = function() {
 
 Api.prototype.getInstagrams = function() {
     var self = this;
-    
-    instagram.tags.recent({ 
+
+    instagram.tags.recent({
         q: 'zambrano',
         complete: function(instagrams){
           _.each(instagrams, function(instagram) {
@@ -64,7 +73,7 @@ Api.prototype.getInstagrams = function() {
             var user    = instagram.user;
             var createdAt   = instagram.created_time;
             var image     = instagram.images.standard_resolution;
-            
+
             var instagram = {
               type: "INSTAGRAM",
               image: image,
