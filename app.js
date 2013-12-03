@@ -20,7 +20,7 @@ console.log(process.env.REDISTOGO_URL);
 if (process.env.REDISTOGO_URL) {
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
-	console.log(rtg.port, rtg.hostname);
+	console.log(rtg.port, rtg.hostname, rtg.auth);
 	redisClient.auth(rtg.auth.split(":")[1]);
 } else {
 	var redisClient = require('redis').createClient();
