@@ -2,16 +2,14 @@
  * FEED
  */
 var redis = require('redis');
-var client = redis.createClient();
 var _ = require('underscore');
 
-module.exports = function(app) {
+module.exports = function(app, client) {
   app.get('/feed', function(req, res) {
 
       //TODO: change to sort by timestamp
       var args = ['userfeed2', '+inf', '-inf'];
       client.zrevrangebyscore(args, function(err, response) {
-      
       	if (err) throw err;
 
 		var activities = [];
@@ -24,12 +22,5 @@ module.exports = function(app) {
         res.render('feed', { title: 'Feed', feed: activities});
 
       });
-
-      
-
-      
-
-      
-
   });
 };

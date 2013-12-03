@@ -70,16 +70,16 @@ app.get('/', function(req, res) {
         gmaps: googleMapsConfig.key});
 });
 
-//require('./routes/pubs')(app,redisClient);
+require('./routes/pubs')(app,redisClient);
 
-//require('./routes/admin')(app, admin, redisClient, pubs);
+require('./routes/admin')(app, admin, redisClient, pubs);
 
-//require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
+require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
 
 //require('./routes/api')(app);
 
 //feed
-//require('./routes/feed')(app);
+require('./routes/feed')(app,redisClient);
 
 // Create server
 http.createServer(app).listen(app.get('port'), function() {
