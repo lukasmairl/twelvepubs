@@ -17,11 +17,11 @@ var admin = require('./controllers/admin');
 
 console.log(process.env.REDISTOGO_URL);
 
-var redis = require('redis-url').connect(process.env.REDISTOGO_URL);
+var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
 
-redis.set('foo', 'bar');
+redisClient.set('foo', 'bar');
 
-redis.get('foo', function(err, value) {
+redisClient.get('foo', function(err, value) {
   console.log('foo is: ' + value);
 });
 
