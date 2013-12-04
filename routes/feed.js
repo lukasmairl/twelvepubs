@@ -18,7 +18,7 @@ module.exports = function(app, client) {
           activities.push(a);
         });
 
-        res.render('feed', { title: 'Feed', feed: activities});
+        res.render('feed', { title: 'The 12 Pubs of Christmas', feed: activities});
 
       });
   });
