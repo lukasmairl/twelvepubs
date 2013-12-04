@@ -1,13 +1,20 @@
 //
 //  Api
-// 
+//
 var _ = require('underscore');
 var twitter = require('twit');
 var instagram = require('instagram-node-lib');
 var foursquare = require('node-foursquare');
-var redis = require("redis");
-var client = redis.createClient();
-  
+
+if (process.env.REDISTOGO_URL) {
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+  var client = require("redis").createClient(rtg.port, rtg.hostname);
+  console.log(rtg.port, rtg.hostname);
+  client.auth(rtg.auth.split(":")[1]);
+} else {
+  var client = require('redis').createClient();
+}
+
 // Twitter
 var T = new twitter({
     consumer_key: '4WLbGgPyRZ1RbCQ8J2i1kA'
@@ -28,35 +35,21 @@ Api.InstagramLastQuery;
 
 
 Api.prototype.getTweets = function() {
-  //console.log("------------------- get tweets -------------------");
   var self = this;
 
   T.get('search/tweets', { q: '#mmsakul12345_test', count: 2 }, function(err, res) {
-      
       var tweets = res.statuses;
-
       var i = 0;
-      console.log("tweet length", tweets.length);
+
       _.each(tweets, function(tweet) {
 
-        var x = new Date(tweet.created_at);
-        console.log("------------ TWEET -------");
-        console.log(tweet.text);
-        console.log(x);
+        var text    = tweet.text;
+        var createdAt   = tweet.created_at;
+        var user    = tweet.user;
+        var date = (new Date(tweet.created_at)).getTime() / 1000;
+        var tweetDate = new Date(tweet.created_at);
 
-
-
-        
-
-        //Mon Dec 02 2013 21:29:11 GMT-0500 (EST) 
-        //Mon Dec 02 2013 21:29:30 GMT-0500 (EST)
-        
-        
-        console.log("----- tweet date ----");
-        console.log(x,self.TwitterLastQuery);
-    
-        if( x > self.TwitterLastQuery ) {  
-            console.log("---- INSIDE ----");  
+        if( tweetDate > self.TwitterLastQuery ) {  
             var text    = tweet.text;
             var createdAt   = tweet.created_at;
             var user    = tweet.user;
@@ -73,14 +66,11 @@ Api.prototype.getTweets = function() {
 
             i++;
 
-            console.log(i);
             if(i == tweets.length ) {
                 self.TwitterLastQuery = new Date();
             }
         }
-        //}
-
-
+        
       });
   });
 
@@ -88,20 +78,17 @@ Api.prototype.getTweets = function() {
 
 Api.prototype.getInstagrams = function() {
     var self = this;
-    
-    instagram.tags.search({ 
-        q: 'lukisfirst_4567',
-        complete: function(instagrams) {
 
-            var i = 0;
-          _.each(instagrams, function(instagram) {
+    instagram.tags.recent({
+        name: 'lukisfirst12345678',
+        complete: function(instagrams){
+          var data = instagrams;
+          var i = 0;
 
-            var x = new Date(instagram.created_time);
+          _.each(data, function(instagram) {
+            var instaDate = new Date(instagram.created_time * 1000);
 
-            console.log(instagram.images.standard_resolution);
-
-            if( x > self.InstagramLastQuery ) {  
-
+            if( instaDate > self.InstagramLastQuery ) {  
                 var user    = instagram.user;
                 var createdAt   = instagram.created_time;
                 var image     = instagram.images.standard_resolution;
@@ -117,7 +104,7 @@ Api.prototype.getInstagrams = function() {
 
                 i++;
 
-                if(i == tweets.length ) {
+                if(i == instagrams.length ) {
                     self.InstagramLastQuery = new Date();
                 }
             }
@@ -139,15 +126,13 @@ Api.prototype.addKey = function(key) {
 Api.prototype.queryApis = function() {
     
     if( this.TwitterFirstRun ) {
-        console.log("----- FIRST TIME ------");
         this.TwitterLastQuery = new Date();
         this.InstagramLastQuery = new Date();
     }
 
-    //var tweets = this.getTweets();
+    var tweets = this.getTweets();
     var instagrams = this.getInstagrams();
-
-    
+   
 }
 
 module.exports = Api;
