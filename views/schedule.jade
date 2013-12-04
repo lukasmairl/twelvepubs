@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  #content
+    ul
+      - for (neighbourhood in pubs)
+        - for (var i = 0; i < pubs[neighbourhood].length; i++)
+          li
+            = pubs[neighbourhood][i].name
