@@ -10,6 +10,7 @@ block content
             - if (item.type == "TWEET")
               = item.text 
             - if (item.type == "INSTAGRAM")
+              #{item.user} #{item.text}
               <img src="#{item.image.url}"/>
             - if (item.type == "NOTIFICATION")
               At #{item.pub}

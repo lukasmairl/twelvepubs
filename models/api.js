@@ -92,10 +92,15 @@ Api.prototype.getInstagrams = function() {
                 var user    = instagram.user;
                 var createdAt   = instagram.created_time;
                 var image     = instagram.images.standard_resolution;
+                var text = instagram.caption.text;
+                
+
+                console.log(instagram);
                 
                 var instagram = {
                   type: "INSTAGRAM",
                   image: image,
+                  text: text,
                   createdAt: createdAt,
                   user: user.username
                 };
