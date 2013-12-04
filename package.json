@@ -8,20 +8,16 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
-    "googlemaps": "*",
     "twit": "*",
     "underscore": "*",
     "instagram-node-lib": "*",
     "redis": "0.9.1",
-    "redis-url": "0.1.0",
     "cron" : "*",
     "node-foursquare": "*"
   },
   "description": "",
   "main": "app.js",
   "devDependencies": {
-    "winston":"*",
-    "vows": "*"
   },
   "repository": {
     "type": "git",

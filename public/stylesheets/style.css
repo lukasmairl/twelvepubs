@@ -36,8 +36,6 @@ position absolute isset to cover the whole viewport
     position: relative;
     width: auto;
     min-height: 1000px;
-    -webkit-box-shadow:  -10px 0px 9px 0px rgba(0, 0, 0, 0.4);
-    box-shadow:  -10px 0px 9px 0px rgba(0, 0, 0, 0.4);
 }
 
 /*
@@ -153,9 +151,7 @@ a {
 
 
 .maps {
-    max-width: 480px;
     width: 100%;
-    margin: 0 auto;
 }
 
 .map-canvas {
