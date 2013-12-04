@@ -170,6 +170,7 @@ a {
 ul.ui-tabs-nav {
 	list-style: none;
 	padding: 0;
+    margin-bottom: 0;
 }
 
 ul.ui-tabs-nav li {
