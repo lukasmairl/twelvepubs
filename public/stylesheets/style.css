@@ -153,7 +153,8 @@ a {
 .maps {
     width: 100%;
     position:absolute;
-    top:30px;bottom:50px;
+    top:40px;
+    bottom:50px;
     left:0;
     right:0;
 }
@@ -168,18 +169,14 @@ a {
 
 ul.ui-tabs-nav {
 	list-style: none;
-	margin-bottom: -1px;
 	padding: 0;
 }
 
 ul.ui-tabs-nav li {
-	width: 40%;
+	width: 50%;
 	display: block;
     float: left;
-	border: 1px solid #aaa;
-	border-width: 1px 1px 1px;
-	border-top-left-radius: 9px;
-	border-top-right-radius: 9px;
+	outline: 1px solid #aaa;
 }
 
 ul.ui-tabs-nav li a {
