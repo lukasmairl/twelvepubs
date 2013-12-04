@@ -8,7 +8,6 @@
   "dependencies": {
     "express": "3.4.0",
     "jade": "*",
-    "googlemaps": "*",
     "twit": "*",
     "underscore": "*",
     "instagram-node-lib": "*",
@@ -19,8 +18,6 @@
   "description": "",
   "main": "app.js",
   "devDependencies": {
-    "winston":"*",
-    "vows": "*"
   },
   "repository": {
     "type": "git",

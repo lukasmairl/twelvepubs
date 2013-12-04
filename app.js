@@ -10,25 +10,23 @@ var http = require('http');
 var path = require('path');
 // var instagram = require('instagram-node-lib');
 // var foursquare = require('node-foursquare');
-var gm = require('googlemaps');
 var util = require('util');
 var pubs = require('./data/pubs');
 var admin = require('./controllers/admin');
 
-console.log(process.env.REDISTOGO_URL);
-
 if (process.env.REDISTOGO_URL) {
 	var rtg   = require("url").parse(process.env.REDISTOGO_URL);
 	var redisClient = require("redis").createClient(rtg.port, rtg.hostname);
-	console.log(rtg.port, rtg.hostname, rtg.auth);
 	redisClient.auth(rtg.auth.split(":")[1]);
 } else {
-	var redisClient = require('redis').createClient();
+	var redisClient = require("redis").createClient();
 }
+
+//stash the pubs in Redis
 redisClient.set('pubs', JSON.stringify(pubs));
 
+// instantiate the express app.
 var app = express();
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -46,12 +44,9 @@ var googleMapsConfig = {
   'key': 'AIzaSyCXKOd7viJVuC_fjYDWQfy57IZTLNzoEzE'
 };
 
-// Google maps
-gm.config(googleMapsConfig);
-
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+ app.use(express.errorHandler());
 }
 
 
@@ -67,10 +62,15 @@ require('./routes/admin')(app, admin, redisClient, pubs);
 
 require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
 
+require('./routes/schedule')(app, {pubs: pubs});
+
+require('./routes/foursquare')(app);
+
+
 //require('./routes/api')(app);
 
 //feed
-require('./routes/feed')(app);
+require('./routes/feed')(app,redisClient);
 
 //api
 var Api = require("./models/api");
