@@ -197,3 +197,21 @@ ul.ui-tabs-nav li.ui-tabs-active{
 ul.ui-tabs-nav li.ui-tabs-active a {
 	color: #666;
 }
+
+.feed {}
+
+.feed ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.feed li {
+    padding: 0 0 20px 0;
+}
+
+
+.feed ul img {
+    width: 100%;
+    max-width:600px;
+}
