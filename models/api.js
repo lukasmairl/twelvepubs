@@ -57,10 +57,14 @@ Api.prototype.getTweets = function() {
 
             var tweet = {
               type: "TWEET",
+              id: tweet.id_str,
               text : text,
               createdAt : date,
-              user: user.screen_name
+              user: user.screen_name,
+              tweet: tweet
             };
+
+            console.log(tweet);
 
             self.addKey(tweet);
 
@@ -93,19 +97,20 @@ Api.prototype.getInstagrams = function() {
                 var createdAt   = instagram.created_time;
                 var image     = instagram.images.standard_resolution;
                 var text = instagram.caption.text;
-                
+
 
                 console.log(instagram);
                 
-                var instagram = {
+                var inst = {
                   type: "INSTAGRAM",
                   image: image,
                   text: text,
                   createdAt: createdAt,
-                  user: user.username
+                  user: user.username,
+                  instagram: instagram
                 };
 
-                self.addKey(instagram);
+                self.addKey(inst);
 
                 i++;
 
