@@ -274,10 +274,7 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     width:200px;
 }
 
-#content.feed {
-    padding-left:0;
-    padding-right:0;
-}
+
 
 .feed {
     padding-top:40px;
@@ -365,6 +362,12 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 
 
 @media (min-width:960px) { 
+
+    #content.feed {
+        padding-left:0;
+        padding-right:0;
+    }
+
     .feed {
         width:502px;
         margin:0 auto;
