@@ -11,7 +11,7 @@
 
 body {
  margin: 0;
- font: 14px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
+ font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 /*
@@ -107,12 +107,23 @@ nav li {
     font-weight: bold;
     border-bottom: 1px solid #222222;
     border-top: 1px solid #444444;
-    padding: 15px;
 }
+
 nav li a {
     color: #fff;
+    display: block;
     text-decoration: none;
+    padding: 15px;
 }
+
+nav li a.active{
+    color: #fff;
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,.2) 100%); /* W3C */
+}
+
 
 /*
 The Layer that will be layed over the content
@@ -148,6 +159,16 @@ p {
 a {
   color: #00B7FF;
 }
+
+ul {
+    list-style: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
 
 
 .maps {

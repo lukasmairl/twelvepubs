@@ -3,7 +3,6 @@ html
   head
     title= title
     meta(content="initial-scale=1, maximum-scale=1, user-scalable=no", name="viewport")
-    link(href='http://fonts.googleapis.com/css?family=Roboto:100,300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     #container
@@ -19,11 +18,21 @@ html
           li
             a(href='/') Ho ho home!
           li
-            a(href='/feed') Feed
+            if slug == 'feed'
+              a(href='/feed', class="active") Feed
+            else
+             a(href='/feed') Feed
           li
-            a(href='/map') Map
+            if slug == 'map'
+              a(href='/map', class="active") Map
+            else
+             a(href='/map') Map
           li
-            a(href='/schedule') Schedule
+            if slug == 'schedule'
+               a(href='/schedule', class='active') Schedule
+            else
+              a(href='/schedule') Schedule
+
       #contentLayer
       block content
     script.
