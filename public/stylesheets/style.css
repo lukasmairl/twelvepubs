@@ -269,5 +269,18 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     float:left;
 }
 
+.feed .notification {
+    border:1px solid #999;
+    border-radius:5px;
+    color:#4F8A10;
+    padding:6px;
+    background-color:#DFF2BF;
+    text-align:center;
+}
+
+.feed .notification strong {
+    font-size:18px;
+}
+
 
 
