@@ -52,7 +52,7 @@ if ('development' == app.get('env')) {
 
 // routing
 app.get('/', function(req, res) {
-   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs,
+   res.render('index', { title: 'The 12 Pubs of Christmas', pubs: pubs, slug:'home',
         gmaps: googleMapsConfig.key});
 });
 
