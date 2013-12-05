@@ -5,21 +5,21 @@
 			"name": "Superfine",
 			"location": [40.702928,-73.987494],
 			"time": "6:15pm",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "rebar",
 			"name": "Rebar",
 			"location": [40.702976,-73.986958],
 			"time": "6:45pm",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "68jay",
 			"name": "68 Jay Street",
 			"location": [40.703904,-73.986636],
 			"time": "7:15pm",
-			"active": false
+			"state": "future"
 		}
 	],
 
@@ -29,63 +29,56 @@
 			"name":"Lolita",
 			"location": [40.718802,-73.990584],
 			"time": "8:00",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "magician",
 			"name":"The Magician",
 			"location": [40.720266,-73.987258],
 			"time": "8:30",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "sanloco",
 			"name":"San Loco",
 			"location": [40.7216,-73.987473],
 			"time": "9:00",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "arlenes",
 			"name":"Arlene's Grocery",
 			"location": [40.721876,-73.988353],
 			"time": "9:30",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "doubledown",
 			"name":"Double Down",
 			"location": [40.723063,-73.985778],
 			"time": "10:00",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "sophies",
 			"name":"Sophies",
 			"location": [40.725112,-73.983782],
 			"time": "10:30",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "horseshoe",
 			"name":"HorseShoe Bar",
 			"location": [40.725551,-73.981379],
 			"time": "11:00",
-			"active": false
-		},
-		{
-			"id": "horseshoe",
-			"name":"HorseShoe Bar",
-			"location": [40.728787,-73.981339],
-			"time": "11:30",
-			"active": false
+			"state": "future"
 		},
 		{
 			"id": "heathers",
 			"name":"Heathers",
 			"location": [40.730121,-73.980267],
 			"time": "12:00",
-			"active": false
+			"state": "future"
 		}
 	]
 }
