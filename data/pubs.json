@@ -5,7 +5,7 @@
 			"name": "Superfine",
 			"address": "126 Front St, Brooklyn",
 			"location": [40.70220,-73.98744],
-			"time": "6:15pm",
+			"time": "6:15",
 			"state": "future"
 		},
 		{
@@ -13,7 +13,7 @@
 			"name": "Rebar",
 			"address": "147 Front St, Brooklyn",
 			"location": [40.70248,-73.98702],
-			"time": "6:45pm",
+			"time": "6:45",
 			"state": "future"
 		},
 		{
@@ -21,7 +21,7 @@
 			"name": "68 Jay Street",
 			"address": "68 Jay St. Brooklyn",
 			"location": [40.70276,-73.98678],
-			"time": "7:15pm",
+			"time": "7:15",
 			"state": "future"
 		}
 	],

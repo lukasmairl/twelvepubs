@@ -9,7 +9,8 @@ block content
             td.venue
               .dots
                 .field
-                  = pubs[neighbourhood][i].name
+                  a(href="http://maps.google.com/?q=" + pubs[neighbourhood][i].address)
+                    = pubs[neighbourhood][i].name
             td.time
               .dots
                 .field
