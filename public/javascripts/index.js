@@ -22,7 +22,7 @@ $(document).ready(function() {
         $('#container').bind('touchmove', function(e){e.preventDefault()});
 
         //set margin for the whole container with a jquery UI animation
-        $("#container").animate({"marginLeft": ["40%", 'easeOutExpo']}, {
+        $("#container").animate({"marginLeft": ["60%", 'easeOutExpo']}, {
             duration: 700
         });
 
