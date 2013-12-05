@@ -9,7 +9,7 @@ $(document).ready(function() {
           center: new google.maps.LatLng(40.702873, -73.986751)
         },
         les: {
-          zoom: 16,
+          zoom: 14,
           center: new google.maps.LatLng(40.723017, -73.985778)
         }
     };
@@ -18,6 +18,7 @@ $(document).ready(function() {
     $.get('/pubs.json').done(function(pubs) {
 
       var pub_num = 0; // running count of pub #s for map labels.
+      var currentNeighbourhood = 'dumbo'  // defaults to Dumbo
 
       for (neighbourhood in pubs) {
         maps[neighbourhood] = new google.maps.Map(
@@ -36,6 +37,7 @@ $(document).ready(function() {
 
           if (pub.active){
             iconUrl = "./images/beer-now.png"
+            currentNeighbourhood = neighbourhood;
           } else if (futurePubs) {
             iconUrl= "./images/beer-to-do.png "
           } else {
@@ -64,7 +66,7 @@ $(document).ready(function() {
       }
 
       $('.tabs').tabs({
-        active: 0,
+        active: (currentNeighbourhood == 'dumbo') ? 0 : 1,
         activate: function(event, ui) {
 
           var neighourhoodID = ui.newPanel[0].id;
@@ -83,9 +85,9 @@ $(document).ready(function() {
 
     function attachContent(map, marker, pub) {
       var infoWindow = new google.maps.InfoWindow({
-        content:  "<div class='map-label'><div><strong>Pub # " + pub.pub_num + ": </strong>" + pub.name + '</div>' + 
+        content:  "<div class='map-label'><div><strong>Pub # " + pub.pub_num + ": </strong>" + pub.name + '</div>' +
                   "<div><strong>Est. Arrival: </strong> "  + pub.time + '</div>' +
-                  "<div> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></div>" +        
+                  "<div> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></div>" +
                   "</div>",
         maxWidth: 200
       });

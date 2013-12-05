@@ -250,17 +250,20 @@ ul.ui-tabs-nav {
 }
 
 ul.ui-tabs-nav li {
-    display: block;
-    outline: 1px solid #aaa;
-    width: 50%;
-    float: left;
+  display: block;
+  outline: 1px solid #aaa;
+  width: 50%;
+  float: left;
 }
 
 ul.ui-tabs-nav li a {
-    display: block;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
+  display: block;
+  padding: 20px 0px 17px;
+  text-align: center;
+  text-decoration: none;
+  font-family: Georgia;
+  font-style: italic;
+  font-size: 16px;
 }
 
 ul.ui-tabs-nav li.ui-tabs-active{
