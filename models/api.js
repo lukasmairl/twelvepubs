@@ -37,7 +37,7 @@ Api.InstagramLastQuery;
 Api.prototype.getTweets = function() {
   var self = this;
 
-  T.get('search/tweets', { q: '#mmsakul12345_test', count: 2 }, function(err, res) {
+  T.get('search/tweets', { q: '#mmsakul12345_test', count: 10 }, function(err, res) {
 
       if (!res) return;
 
@@ -128,7 +128,7 @@ Api.prototype.getInstagrams = function() {
 
 Api.prototype.addKey = function(key) {
 
-    var args = [ 'userfeed5', key.createdAt, JSON.stringify(key) ];
+    var args = [ 'userfeed7', key.createdAt, JSON.stringify(key) ];
     client.zadd(args, function (err, response) {
         if (err) throw err;
         console.log('added '+response+' items.');

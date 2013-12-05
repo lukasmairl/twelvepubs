@@ -217,7 +217,9 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 	color: #666;
 }
 
-.feed {}
+.feed {
+    margin-top:10px;
+}
 
 .feed ul{
     margin: 0;
@@ -229,8 +231,20 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     padding: 0 0 20px 0;
 }
 
+.feed iframe {
+    margin: 0 auto !important;
+}
 
-.feed ul img {
+.feed ul .instagram-pic {
     width: 100%;
     max-width:600px;
 }
+
+.feed ul .profile-pic {
+    width:30px;
+    height:30px;
+    float:left;
+}
+
+
+
