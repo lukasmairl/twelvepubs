@@ -17,6 +17,8 @@ $(document).ready(function() {
 
     $.get('/pubs.json').done(function(pubs) {
 
+      var pub_num = 0; // running count of pub #s for map labels.
+
       for (neighbourhood in pubs) {
         maps[neighbourhood] = new google.maps.Map(
             document.getElementById('map-canvas-' + neighbourhood),
@@ -28,6 +30,9 @@ $(document).ready(function() {
 
           var pubLatLng =
               new google.maps.LatLng(pub.location[0], pub.location[1]);
+
+          pub_num++;
+          pub.pub_num = pub_num;
 
           if (pub.active){
             iconUrl = "./images/beer-now.png"
@@ -77,10 +82,9 @@ $(document).ready(function() {
 
 
     function attachContent(map, marker, pub) {
-      console.log(pub);
       var infoWindow = new google.maps.InfoWindow({
-        content:  "<div class='map-label'><p><strong>Pub: </strong>" + pub.name + '</p>' + 
-                  "<p><strong>Est. Arrival</strong> "  + pub.time + '</p>' +
+        content:  "<div class='map-label'><p><strong>Pub # " + pub.pub_num + ": </strong>" + pub.name + '</p>' + 
+                  "<p><strong>Est. Arrival: </strong> "  + pub.time + '</p>' +
                   "<p> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></p>" +        
                   "</div>",
         maxWidth: 200
