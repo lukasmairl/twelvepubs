@@ -2,10 +2,15 @@ extends layout
 
 block content
   #content
-    ul
+    table.schedule
       - for (neighbourhood in pubs)
         - for (var i = 0; i < pubs[neighbourhood].length; i++)
-          li
-            = pubs[neighbourhood][i].name
-            | at
-            = pubs[neighbourhood][i].time
+          tr
+            td.venue
+              .dots
+                .field
+                  = pubs[neighbourhood][i].name
+            td.time
+              .dots
+                .field
+                  = pubs[neighbourhood][i].time
