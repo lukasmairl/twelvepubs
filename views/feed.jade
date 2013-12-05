@@ -1,9 +1,13 @@
 extends layout
 
 block content
-  #content
-
+  #content.feed
+    #hook.hook(style='margin-top: -85px;')
+      .hook-loader
+        .hook-spinner
     div.feed
+      p.feed-header
+        |#12PubsHuge<br/>Twitter Instagram
       ul.clearfix
         - each item in feed
           li
@@ -15,8 +19,9 @@ block content
               <img class="instagram-pic" src="#{item.image.url}"/>
             - if (item.type == "NOTIFICATION")
               div.notification
-                <img src="/images/beer.png"/>
                 p
-                  |<strong>At #{item.pub}</strong>
+                  <img src="/images/beer.png"/>
+                p
+                  |<strong>At #{item.pub}</strong><br/>##{item.hashtag} #12PubsHuge
                 p
                   |see <a href="/map">map</a> | <a href="/schedule">schedule</a>

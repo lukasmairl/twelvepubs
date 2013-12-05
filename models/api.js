@@ -67,7 +67,7 @@ Api.prototype.getTweets = function() {
               tweet: tweet
             };
 
-            console.log(tweet);
+            //console.log(tweet);
 
             self.addKey(tweet);
 
@@ -102,7 +102,7 @@ Api.prototype.getInstagrams = function() {
                 var text = instagram.caption.text;
 
 
-                console.log(instagram);
+                //console.log(instagram);
                 
                 var inst = {
                   type: "INSTAGRAM",

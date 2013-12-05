@@ -14,7 +14,6 @@ module.exports = function(app, client) {
       var activities = [];
         _.each(response, function(activity) {
           var a = JSON.parse(activity);
-
           activities.push(a);
         });
 

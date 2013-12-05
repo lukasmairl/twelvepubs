@@ -1,8 +1,8 @@
-$.ajax({
-  url: "https://api.foursquare.com/v2/users/self?v=20131119",
-}).done(function(result) {
-  console.log(result);
-});
+// $.ajax({
+//   url: "https://api.foursquare.com/v2/users/self?v=20131119",
+// }).done(function(result) {
+//   console.log(result);
+// });
 
 
 $(document).ready(function() {
@@ -53,7 +53,13 @@ $(document).ready(function() {
         $("#welcome").toggleClass("hide");
     });
 
-
+    // Callback
+    $('#hook').hook({
+      reloadPage: true,
+      reloadEl: function(){
+        console.log('More Beer!');
+      }
+    });
 
 
  });
