@@ -18,7 +18,7 @@ body {
 Header is relative so z-index: 1 guarantees always displayed on top
 */
 header {
-    background-color: #111;
+    background-color: #A52A2A;
     padding: 15px 10px 11px;
     position: fixed;
     text-decoration: none;
@@ -42,7 +42,7 @@ position absolute isset to cover the whole viewport
 the hamburger button with a little gradient effekt
 */
 #hamburger {
-    background: #232323;
+    background: #A52A2A;
     border-radius: 3px 3px 3px 3px;
     border: 1px solid #363A42;
     cursor: pointer;
@@ -311,6 +311,10 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     width:30px;
 }
 
+.feed span.pub {
+    text-transform:capitalize;
+}
+
 .feed .notification {
     
     border-radius:5px;
@@ -318,7 +322,7 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     color:#4F8A10;
     padding:6px;
     text-align:center;
-
+    background-color:#DFF2BF;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

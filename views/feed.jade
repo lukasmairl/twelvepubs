@@ -18,10 +18,11 @@ block content
                 | <img class="profile-pic" src="#{item.instagram.user.profile_picture}"/> <strong>#{item.user}</strong> #{item.text}
               <img class="instagram-pic" src="#{item.image.url}"/>
             - if (item.type == "NOTIFICATION")
+              |<p style="text-align:center">Now at</p>
               div.notification
                 p
                   <img src="/images/beer.png"/>
                 p
-                  |<strong>At #{item.pub}</strong><br/>##{item.hashtag} #12PubsHuge
+                  |<strong><span class="pub">#{item.pub}</span></strong><br/>##{item.hashtag} #12PubsHuge
                 p
                   |see <a href="/map">map</a> | <a href="/schedule">schedule</a>
