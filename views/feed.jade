@@ -14,7 +14,8 @@ block content
                 | <img class="profile-pic" src="#{item.instagram.user.profile_picture}"/> <strong>#{item.user}</strong> #{item.text}
               <img class="instagram-pic" src="#{item.image.url}"/>
             - if (item.type == "NOTIFICATION")
-              p
-                |At #{item.pub}
-              p
-                |see <a href="/map">map</a> | <a href="/schedule">schedule</a>
+              div.notification
+                p
+                  |<strong>At #{item.pub}</strong>
+                p
+                  |see <a href="/map">map</a> | <a href="/schedule">schedule</a>
