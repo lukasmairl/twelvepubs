@@ -193,3 +193,8 @@ ul.ui-tabs-nav li.ui-tabs-active{
 ul.ui-tabs-nav li.ui-tabs-active a {
 	color: #666;
 }
+
+/* feed */
+.feed ul {
+    list-style-type:none;
+}

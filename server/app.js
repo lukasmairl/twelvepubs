@@ -71,7 +71,7 @@ api.TwitterFirstRun = false;
 
 
 //console.log("-------------- CRON -----------------");
-var cronJob = require('cron').CronJob;
+//var cronJob = require('cron').CronJob;
 
 var cronJob = require('cron').CronJob;
 new cronJob('*/30  * * * * *', function(){
