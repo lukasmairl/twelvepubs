@@ -44,4 +44,12 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("#colophon h3").click(function(){
+        $("#colophon p").toggleClass("hide");
+    });
+
+
+
+
  });

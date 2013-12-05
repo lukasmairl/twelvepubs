@@ -125,6 +125,30 @@ nav li a.active{
 }
 
 
+#colophon {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    width: 50%;
+}
+
+#colophon h3 {
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#colophon p {
+    text-align:left;
+    font-size: 0.8em;
+}
+
+#colophon p.hide {
+    display:none;
+}
+
+
+
 /*
 The Layer that will be layed over the content
 so that the content is unclickable while menu is shown
@@ -158,6 +182,7 @@ p {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 ul {
@@ -209,8 +234,6 @@ ul.ui-tabs-nav li a {
 }
 
 ul.ui-tabs-nav li.ui-tabs-active{
-    position: relative;
-    margin-bottom: -3px
 }
 
 ul.ui-tabs-nav li.ui-tabs-active a {
