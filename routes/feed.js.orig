@@ -14,10 +14,18 @@ module.exports = function(app, client) {
       var activities = [];
         _.each(response, function(activity) {
           var a = JSON.parse(activity);
+
+<<<<<<< HEAD
+          console.log(activity);
+
+      		activities.push(a);
+      	});
+=======
           activities.push(a);
         });
+>>>>>>> 27276f9a2422e5eb8ec9b88c3389c1cd019b6506
 
-        res.render('feed', { title: 'The 12 Pubs of Christmas', feed: activities, slug:'feed'});
+        res.render('feed', { title: 'The 12 Pubs of Christmas', feed: activities});
 
       });
   });

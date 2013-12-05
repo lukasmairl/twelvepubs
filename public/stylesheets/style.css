@@ -18,7 +18,7 @@ body {
 Header is relative so z-index: 1 guarantees always displayed on top
 */
 header {
-    background-color: #111;
+    background-color: #A52A2A;
     padding: 15px 10px 11px;
     position: fixed;
     text-decoration: none;
@@ -42,7 +42,7 @@ position absolute isset to cover the whole viewport
 the hamburger button with a little gradient effekt
 */
 #hamburger {
-    background: #232323;
+    background: #A52A2A;
     border-radius: 3px 3px 3px 3px;
     border: 1px solid #363A42;
     cursor: pointer;
@@ -81,14 +81,9 @@ nav {
     top: 0px;
     width: 70%;
     z-index: 0;
-    background: #3e3c3d;
-    background: -moz-linear-gradient(top,  #3e3c3d 0%, #2d2c2d 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3c3d), color-stop(100%,#2d2c2d));
-    background: -webkit-linear-gradient(top,  #3e3c3d 0%,#2d2c2d 100%);
-    background: -o-linear-gradient(top,  #3e3c3d 0%,#2d2c2d 100%);
-    background: -ms-linear-gradient(top,  #3e3c3d 0%,#2d2c2d 100%);
-    background: linear-gradient(to bottom,  #3e3c3d 0%,#2d2c2d 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3c3d', endColorstr='#2d2c2d',GradientType=0 );
+    background: #510401;
+
+
 }
 
 /*
@@ -102,8 +97,8 @@ nav ul {
 }
 
 nav li {
-    border-bottom: 1px solid #222222;
-    border-top: 1px solid #444444;
+    border-bottom: 1px solid #330101;
+    
     font-size: 1em;
     font-weight: bold;
     position: relative;
@@ -122,10 +117,8 @@ nav li a {
 
 nav li a.active{
     color: #fff;
-    background: -moz-linear-gradient(bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
-    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,.2) 100%); /* W3C */
+    background:#330101;
+
 }
 
 
@@ -204,7 +197,7 @@ so that the content is unclickable while menu is shown
 h1 {
     color: #eee;
     font-family: 'Great Vibes', cursive;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: normal;
     line-height: 1.3;
     line-height: 32px;
@@ -277,8 +270,16 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     width:200px;
 }
 
+
+
 .feed {
-    margin-top:10px;
+    padding-top:40px;
+}
+
+.feed .feed-header {
+    text-align:center;
+    font-size:12px;
+    line-height:1.6em;
 }
 
 .feed ul{
@@ -306,18 +307,37 @@ ul.ui-tabs-nav li.ui-tabs-active a {
     width:30px;
 }
 
+.feed span.pub {
+    text-transform:capitalize;
+}
+
 .feed .notification {
-    background-color:#DFF2BF;
+    
     border-radius:5px;
     border:1px solid #999;
     color:#4F8A10;
     padding:6px;
     text-align:center;
+    background-color:#DFF2BF;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 10px 0px;
+    border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
+    position: static;
+    visibility: visible;
+
 }
 
 .feed .notification strong {
     font-size:18px;
 }
+
+
 
 .schedule {
   width: 80%;
@@ -338,4 +358,18 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 
 .schedule .field {
   background: #fff
+}
+
+
+@media (min-width:960px) { 
+
+    #content.feed {
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .feed {
+        width:502px;
+        margin:0 auto;
+    }
 }

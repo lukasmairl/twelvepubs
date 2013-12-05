@@ -37,10 +37,15 @@ Api.InstagramLastQuery;
 Api.prototype.getTweets = function() {
   var self = this;
 
-  T.get('search/tweets', { q: '#mmsakul12345_test', count: 40 }, function(err, res) {
+<<<<<<< HEAD
+  T.get('search/tweets', { q: '#mmsakul12345_test', count: 10 }, function(err, res) {
+      
+=======
+  T.get('search/tweets', { q: '#mmsakul12345_test', count: 2 }, function(err, res) {
 
       if (!res) return;
 
+>>>>>>> 27276f9a2422e5eb8ec9b88c3389c1cd019b6506
       var tweets = res.statuses;
       var i = 0;
 
@@ -67,7 +72,7 @@ Api.prototype.getTweets = function() {
               tweet: tweet
             };
 
-            //console.log(tweet);
+            console.log(tweet);
 
             self.addKey(tweet);
 
@@ -102,7 +107,7 @@ Api.prototype.getInstagrams = function() {
                 var text = instagram.caption.text;
 
 
-                //console.log(instagram);
+                console.log(instagram);
                 
                 var inst = {
                   type: "INSTAGRAM",
