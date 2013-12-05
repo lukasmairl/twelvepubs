@@ -9,18 +9,16 @@ module.exports = function(app, client) {
       //TODO: change to sort by timestamp
       var args = ['userfeed7', '+inf', '-inf'];
       client.zrevrangebyscore(args, function(err, response) {
-      	if (err) throw err;
+        if (err) throw err;
 
-		var activities = [];
+      var activities = [];
         _.each(response, function(activity) {
-      		var a = JSON.parse(activity);
+          var a = JSON.parse(activity);
 
-          console.log(activity);
+          activities.push(a);
+        });
 
-      		activities.push(a);
-      	});
-
-        res.render('feed', { title: 'Feed', feed: activities});
+        res.render('feed', { title: 'The 12 Pubs of Christmas', feed: activities});
 
       });
   });

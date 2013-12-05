@@ -38,7 +38,9 @@ Api.prototype.getTweets = function() {
   var self = this;
 
   T.get('search/tweets', { q: '#mmsakul12345_test', count: 10 }, function(err, res) {
-      
+
+      if (!res) return;
+
       var tweets = res.statuses;
       var i = 0;
 

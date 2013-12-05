@@ -57,24 +57,15 @@ app.get('/', function(req, res) {
 });
 
 require('./routes/pubs')(app,redisClient);
-
 require('./routes/admin')(app, admin, redisClient, pubs);
-
 require('./routes/map')(app, {pubs: pubs, gmaps: googleMapsConfig.key});
-
 require('./routes/schedule')(app, {pubs: pubs});
-
 require('./routes/foursquare')(app);
-
-
-//require('./routes/api')(app);
-
-//feed
 require('./routes/feed')(app,redisClient);
 
 //api
 var Api = require("./models/api");
-api = new Api();
+api = new Api('foo');
 api.TwitterFirstRun = true;
 api.queryApis();
 api.TwitterFirstRun = false;
