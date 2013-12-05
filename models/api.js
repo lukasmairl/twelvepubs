@@ -37,7 +37,7 @@ Api.InstagramLastQuery;
 Api.prototype.getTweets = function() {
   var self = this;
 
-  T.get('search/tweets', { q: '#mmsakul12345_test', count: 2 }, function(err, res) {
+  T.get('search/tweets', { q: '#mmsakul12345_test', count: 40 }, function(err, res) {
 
       if (!res) return;
 
