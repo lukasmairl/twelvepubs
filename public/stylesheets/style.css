@@ -152,6 +152,11 @@ a {
 
 .maps {
     width: 100%;
+    position:absolute;
+    top:40px;
+    bottom:50px;
+    left:0;
+    right:0;
 }
 
 .map-canvas {
@@ -164,18 +169,15 @@ a {
 
 ul.ui-tabs-nav {
 	list-style: none;
-	margin-bottom: -1px;
 	padding: 0;
+    margin-bottom: 0;
 }
 
 ul.ui-tabs-nav li {
-	width: 40%;
+	width: 50%;
 	display: block;
     float: left;
-	border: 1px solid #aaa;
-	border-width: 1px 1px 1px;
-	border-top-left-radius: 9px;
-	border-top-right-radius: 9px;
+	outline: 1px solid #aaa;
 }
 
 ul.ui-tabs-nav li a {
@@ -192,4 +194,22 @@ ul.ui-tabs-nav li.ui-tabs-active{
 
 ul.ui-tabs-nav li.ui-tabs-active a {
 	color: #666;
+}
+
+.feed {}
+
+.feed ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.feed li {
+    padding: 0 0 20px 0;
+}
+
+
+.feed ul img {
+    width: 100%;
+    max-width:600px;
 }

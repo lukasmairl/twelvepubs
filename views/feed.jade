@@ -8,11 +8,14 @@ block content
         - each item in feed
           li
             - if (item.type == "TWEET")
-              = item.text 
+              p
+                | #{item.user} #{item.text}
             - if (item.type == "INSTAGRAM")
-              #{item.user} #{item.text}
+              p
+                | #{item.user} #{item.text}
               <img src="#{item.image.url}"/>
             - if (item.type == "NOTIFICATION")
-              At #{item.pub}
-              see <a href="/map">map</a> | <a href="/schedule">schedule</a>
-        
+              p
+                |At #{item.pub}
+              p
+                |see <a href="/map">map</a> | <a href="/schedule">schedule</a>
