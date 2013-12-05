@@ -116,7 +116,7 @@ nav li a {
     text-decoration: none;
     font-family: Georgia;
     font-style: italic;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: normal;
 }
 
@@ -134,7 +134,7 @@ nav li a.active{
     color: #fff;
     padding: 10px;
     position: absolute;
-    width: 50%;
+    width: 60%;
 }
 
 #colophon h3 {
