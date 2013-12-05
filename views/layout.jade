@@ -4,6 +4,7 @@ html
     title= title
     meta(content="initial-scale=1, maximum-scale=1, user-scalable=no", name="viewport")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='/images/beer.png', rel='shortcut icon')
   body
     #container
       header
@@ -16,7 +17,7 @@ html
         ul
 
           li
-            a(href='/') Ho ho home!
+            a(href='/') (Ho ho) Home!
           li
             if slug == 'feed'
               a(href='/feed', class="active") Feed
@@ -32,6 +33,15 @@ html
                a(href='/schedule', class='active') Schedule
             else
               a(href='/schedule') Schedule
+
+
+
+        div#colophon
+          h3
+            | About
+          p.hide
+            | Hastily handmade in Brooklyn in December, 2013 by <a href="https://twitter.com/juannerito">@juannerito</a> and <a href="https://twitter.com/lukasmairl">@lukasmairl</a> using <a href="http://nodejs.org/">node.js</a> and <a href="https://www.heroku.com/">heroku.</a> Badly.
+
 
       #contentLayer
       block content
