@@ -18,7 +18,10 @@ html
         ul
 
           li
-            a(href='/') (Ho, Ho) Home!!
+            if slug == 'home'
+              a(href='/', class="active") (Ho, Ho) Home!!!
+            else
+             a(href='/') (Ho, Ho) Home!!!
           li
             if slug == 'feed'
               a(href='/feed', class="active") Feed
