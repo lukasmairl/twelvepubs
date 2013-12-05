@@ -3,10 +3,14 @@ extends layout
 block content
   #content
     table.schedule
+      - pubNum=0
       - for (neighbourhood in pubs)
         - for (var i = 0; i < pubs[neighbourhood].length; i++)
+          - pubNum++
           tr
             td.venue
-              = pubs[neighbourhood][i].name
+              = pubNum + ". "
+              a(href="http://maps.google.com/?q=" + pubs[neighbourhood][i].address)
+                = pubs[neighbourhood][i].name
             td.time
               = pubs[neighbourhood][i].time

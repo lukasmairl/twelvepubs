@@ -83,9 +83,9 @@ $(document).ready(function() {
 
     function attachContent(map, marker, pub) {
       var infoWindow = new google.maps.InfoWindow({
-        content:  "<div class='map-label'><p><strong>Pub # " + pub.pub_num + ": </strong>" + pub.name + '</p>' + 
-                  "<p><strong>Est. Arrival: </strong> "  + pub.time + '</p>' +
-                  "<p> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></p>" +        
+        content:  "<div class='map-label'><div><strong>Pub # " + pub.pub_num + ": </strong>" + pub.name + '</div>' + 
+                  "<div><strong>Est. Arrival: </strong> "  + pub.time + '</div>' +
+                  "<div> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></div>" +        
                   "</div>",
         maxWidth: 200
       });

@@ -49,6 +49,10 @@ $(document).ready(function() {
         $("#colophon p").toggleClass("hide");
     });
 
+    $(".help-hide").click(function(){
+        $("#welcome").toggleClass("hide");
+    });
+
 
 
 
