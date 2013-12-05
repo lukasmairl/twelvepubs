@@ -4,7 +4,7 @@
 			"id": "superfine",
 			"name": "Superfine",
 			"address": "126 Front St, Brooklyn",
-			"location": [40.702928,-73.987494],
+			"location": [40.70220,-73.98744],
 			"time": "6:15pm",
 			"state": "future"
 		},
@@ -12,7 +12,7 @@
 			"id": "rebar",
 			"name": "Rebar",
 			"address": "147 Front St, Brooklyn",
-			"location": [40.702976,-73.986958],
+			"location": [40.70248,-73.98702],
 			"time": "6:45pm",
 			"state": "future"
 		},
@@ -20,7 +20,7 @@
 			"id": "68jay",
 			"name": "68 Jay Street",
 			"address": "68 Jay St. Brooklyn",
-			"location": [40.703904,-73.986636],
+			"location": [40.70276,-73.98678],
 			"time": "7:15pm",
 			"state": "future"
 		}
@@ -31,14 +31,14 @@
 			"id": "lolita",
 			"name":"Lolita",
 			"address": "266 Broome St, Manhattan",
-			"location": [40.718802,-73.990584],
+			"location": [40.71839,-73.99048],
 			"time": "8:00",
 			"state": "future"
 		},
 		{
 			"id": "magician",
 			"name":"The Magician",
-			"location": [40.720266,-73.987258],
+			"location": [40.71992,-73.98726],
 			"address": "118 Rivington St, Manhattan",
 			"time": "8:30",
 			"state": "future"
@@ -46,7 +46,7 @@
 		{
 			"id": "sanloco",
 			"name":"San Loco",
-			"location": [40.7216,-73.987473],
+			"location": [40.72108,-73.98752],
 			"address": "111 Stanton St, Manhattan",
 			"time": "9:00",
 			"state": "future"
@@ -55,14 +55,14 @@
 			"id": "arlenes",
 			"name":"Arlene's Grocery",
 			"address": "95 Stanton St, Manhattan",
-			"location": [40.721876,-73.988353],
+			"location": [40.72132,-73.98821],
 			"time": "9:30",
 			"state": "future"
 		},
 		{
 			"id": "doubledown",
 			"name":"Double Down",
-			"location": [40.723063,-73.985778],
+			"location": [40.72252,-73.98574],
 			"address": "14 Avenue A, Manhattan",
 			"time": "10:00",
 			"state": "future"
@@ -70,15 +70,23 @@
 		{
 			"id": "sophies",
 			"name":"Sophies",
-			"location": [40.725112,-73.983782],
+			"location": [40.72484,-73.98378],
 			"address": "507 E 5th St, Manhattan",
+			"time": "10:30",
+			"state": "future"
+		},
+		{
+			"id": "acebar",
+			"name":"Ace Bar",
+			"location": [40.72444,-73.98283],
+			"address": "531 E 5th St, Manhattan",
 			"time": "10:30",
 			"state": "future"
 		},
 		{
 			"id": "horseshoe",
 			"name":"HorseShoe Bar",
-			"location": [40.725551,-73.981379],
+			"location": [40.72502,-73.98149],
 			"address": "108 Avenue B, Manhattan",
 			"time": "11:00",
 			"state": "future"
@@ -86,7 +94,7 @@
 		{
 			"id": "heathers",
 			"name":"Heathers",
-			"location": [40.730121,-73.980267],
+			"location": [40.72932,-73.98051],
 			"address": "506 East 13th Street, Manhattan",
 			"time": "12:00",
 			"state": "future"
