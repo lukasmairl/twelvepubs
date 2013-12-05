@@ -3,6 +3,7 @@
 		{
 			"id": "superfine",
 			"name": "Superfine",
+			"address": "126 Front St, Brooklyn",
 			"location": [40.702928,-73.987494],
 			"time": "6:15pm",
 			"state": "future"
@@ -10,6 +11,7 @@
 		{
 			"id": "rebar",
 			"name": "Rebar",
+			"address": "147 Front St, Brooklyn",
 			"location": [40.702976,-73.986958],
 			"time": "6:45pm",
 			"state": "future"
@@ -17,6 +19,7 @@
 		{
 			"id": "68jay",
 			"name": "68 Jay Street",
+			"address": "68 Jay St. Brooklyn",
 			"location": [40.703904,-73.986636],
 			"time": "7:15pm",
 			"state": "future"
@@ -27,6 +30,7 @@
 		{
 			"id": "lolita",
 			"name":"Lolita",
+			"address": "266 Broome St, Manhattan",
 			"location": [40.718802,-73.990584],
 			"time": "8:00",
 			"state": "future"
@@ -35,6 +39,7 @@
 			"id": "magician",
 			"name":"The Magician",
 			"location": [40.720266,-73.987258],
+			"address": "118 Rivington St, Manhattan",
 			"time": "8:30",
 			"state": "future"
 		},
@@ -42,12 +47,14 @@
 			"id": "sanloco",
 			"name":"San Loco",
 			"location": [40.7216,-73.987473],
+			"address": "111 Stanton St, Manhattan",
 			"time": "9:00",
 			"state": "future"
 		},
 		{
 			"id": "arlenes",
 			"name":"Arlene's Grocery",
+			"address": "95 Stanton St, Manhattan",
 			"location": [40.721876,-73.988353],
 			"time": "9:30",
 			"state": "future"
@@ -56,6 +63,7 @@
 			"id": "doubledown",
 			"name":"Double Down",
 			"location": [40.723063,-73.985778],
+			"address": "14 Avenue A, Manhattan",
 			"time": "10:00",
 			"state": "future"
 		},
@@ -63,6 +71,7 @@
 			"id": "sophies",
 			"name":"Sophies",
 			"location": [40.725112,-73.983782],
+			"address": "507 E 5th St, Manhattan",
 			"time": "10:30",
 			"state": "future"
 		},
@@ -70,6 +79,7 @@
 			"id": "horseshoe",
 			"name":"HorseShoe Bar",
 			"location": [40.725551,-73.981379],
+			"address": "108 Avenue B, Manhattan",
 			"time": "11:00",
 			"state": "future"
 		},
@@ -77,6 +87,7 @@
 			"id": "heathers",
 			"name":"Heathers",
 			"location": [40.730121,-73.980267],
+			"address": "506 East 13th Street, Manhattan",
 			"time": "12:00",
 			"state": "future"
 		}

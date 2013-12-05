@@ -77,8 +77,12 @@ $(document).ready(function() {
 
 
     function attachContent(map, marker, pub) {
+      console.log(pub);
       var infoWindow = new google.maps.InfoWindow({
-        content: "<div style='width:200px;'><p>" + pub.name + '/' + pub.time + '</p></div>',
+        content:  "<div class='map-label'><p><strong>Pub: </strong>" + pub.name + '</p>' + 
+                  "<p><strong>Est. Arrival</strong> "  + pub.time + '</p>' +
+                  "<p> <a target='_blanks' href='http://maps.google.com/?q=" + pub.address + "'>" + pub.address + "</a></p>" +        
+                  "</div>",
         maxWidth: 200
       });
 

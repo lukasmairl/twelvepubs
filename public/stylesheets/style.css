@@ -243,6 +243,10 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 	color: #666;
 }
 
+.map-label {
+    width:200px;
+}
+
 .feed {
     margin-top:10px;
 }
